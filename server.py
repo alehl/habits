@@ -11,14 +11,14 @@ def index():
 
         if request.form['password'] == 'password':
             session['user'] = request.form['username']
-            return redirect(url_for('protected'))
+            return redirect(url_for('chooseachievement'))
 
     return render_template('index.html')
 
-@app.route('/protected')
-def protected():
+@app.route('/chooseachievement')
+def chooseachievement():
     if g.user:
-        return render_template('protected.html')
+        return render_template('chooseachievement.html')
 
     return redirect(url_for('index'))
 
@@ -42,4 +42,3 @@ def dropsession():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
