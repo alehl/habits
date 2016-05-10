@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>Overview</title>
+</head>
+<body>
+<h1>When do you want to do this?</h1>
+
+    <form action = "/overview" method="POST">
+
+        <label> Name your achievement:
+            <input type="text" name="nameofachievement">
+        </label>
+    <br><br>
+
+        <label id="achievementdayid" name="achievementday"> I only want to do it on specific days:
+            S<input type="checkbox" value="S" name="saturday">
+            M<input type="checkbox" value="M" name="monday">
+            T<input type="checkbox" value="T" name="tuesday">
+            W<input type="checkbox" value="W" name="wednesday">
+            T<input type="checkbox" value="T" name="thursday">
+            F<input type="checkbox" value="F" name="friday">
+            S<input type="checkbox" value="S" name="saturday">
+        </label>
+    <br><br>
+
+        <label>I want to do this
+        <select id="days_of_the_week" name="numberftimes">
+            <option value="one">one</option>
+            <option value="two">two</option>
+            <option value="three">three</option>
+            <option value="four">four</option>
+            <option value="five">five</option>
+            <option value="six">six</option>
+            <option value="seven">seven</option>
+            <option value="eight">eight</option>
+            <option value="nine">nine</option>
+            <option value="ten">ten</option>
+        </select>
+        </label>
+        
+        <label> times a
+        <select id ="recurrenceid" name="recurrence">
+            <option value="day">day</option>
+            <option value="week">week</option>
+            <option value="month">month</option>
+            <option value="year">year</option>
+        </select>
+        </label>
+        <input type="submit" id ="save_button" value="&#9829; save &#9829;">
+
+    </form>
+
+</body>
+</html>
