@@ -51,17 +51,28 @@ def dropsession():
 
     session.pop('user', None)
     return 'Dropped!'
-
-# These will be the routes for the chooseachievement page
-
-@app.route('/create_your_own', methods =['GET', 'POST'])
-def createyourown_form():
+        
+@app.route('/pick_one', methods =['GET', 'POST'])
+def pick_one():
     """This will take the user to the 'create your own' page"""
 
     return render_template("create_your_own.html")
 
+@app.route('/results')
+def see_results():
+    """This will display what the user created or the achievement they selected"""
 
-@app.route('/overview', methods = ['GET', 'POST'])
+    new_achievement = request.values.get('createnew')
+    selected_achievement = request.values.get('choosefrom')
+
+    if new_achievement == "new":
+        return render_template("create_your_own.html")
+
+    if selected_achievement == "old":
+        return render_template("created_achievements.html")
+
+
+@app.route('/created', methods = ['GET', 'POST'])
 def show_created_chosen_achievements():
     """This will handle all submissions from create_your_own.html
      and choose_achievement.html"""
@@ -81,3 +92,5 @@ def show_created_chosen_achievements():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    app.run()
