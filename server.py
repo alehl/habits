@@ -1,31 +1,35 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for, jsonify
 import os
+from flask.ext.sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
+# Function to connect app to database
+
+def connect_to_db(app):
+    """Connect to database"""
+
+    app.config['SQLALCHEMY_DATABASE_DATABASE_URI'] = 'postgresql:///achievements'
+    db.app = app
+    db.init_app(app)
+
 # These functions create a session for the user. 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
 
-    """Sets 'password' as default password and begins session
-    if password is entered correctly"""
+    """Homepage"""
 
-    if request.method == 'POST':
-        session.pop('user', None)
-
-        if request.form['password'] == 'password':
-            session['user'] = request.form['username']
-            return redirect('/choose_achievement')
-
-    return render_template('index.html')
+    return "This is the homepage"
 
 
 @app.route('/choose_achievement')
 def chooseachievement():
-    """Takes user to page where they can choose whether they want to
-    create their own achievement or get a predefined achievement"""
+
+    """Two options: create new achievement or select one from the app"""
 
     if g.user:
         return render_template('choose_achievement.html')
@@ -38,15 +42,25 @@ def before_request():
     if 'user' in session:
         g.user = session['user']
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    """'password' is the default pwd and begins session if entered"""
+
+    if request.method == 'POST':
+        session.pop('user', None)
+
+        if request.form['password'] == 'password':
+            session['user'] = request.form['username']
+            return redirect('/choose_achievement')
+
+    return render_template('index.html')
     if 'user' in session:
         return session['user']
 
     return 'Not logged in!'
 
-@app.route('/dropsession')
-def dropsession():
+@app.route('/logout')
+def logout():
     """Logs user out of a session"""
 
     session.pop('user', None)
@@ -87,7 +101,6 @@ def show_created_chosen_achievements():
         achievementday = achievementday,
         numberftimes = numberftimes,
         recurrence = recurrence)
-
 
 
 if __name__ == '__main__':
