@@ -49,6 +49,20 @@ def login():
 
     return 'Not logged in!'
 
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    checks = User.query.filter_by(username=username).first()
+
+    if checks == None:
+
+        new_user = g.user(username=username,
+                    password=password)
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        
 @app.route('/logout')
 def logout():
     """Logs user out of a session"""
