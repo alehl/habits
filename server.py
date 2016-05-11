@@ -1,23 +1,11 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for, jsonify
 import os
-from flask.ext.sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-# Function to connect app to database
-
-def connect_to_db(app):
-    """Connect to database"""
-
-    app.config['SQLALCHEMY_DATABASE_DATABASE_URI'] = 'postgresql:///achievements'
-    db.app = app
-    db.init_app(app)
 
 # These functions create a session for the user. 
-
 @app.route('/')
 def index():
 
@@ -36,11 +24,13 @@ def chooseachievement():
 
     return redirect(url_for('index'))
 
+
 @app.before_request
 def before_request():
     g.user = None
     if 'user' in session:
         g.user = session['user']
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -65,7 +55,8 @@ def logout():
 
     session.pop('user', None)
     return 'Dropped!'
-        
+
+
 @app.route('/pick_one', methods =['GET', 'POST'])
 def pick_one():
     """This will take the user to the 'create your own' page"""
@@ -107,3 +98,4 @@ if __name__ == '__main__':
     app.run(debug=True)
 
     app.run()
+
