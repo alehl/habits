@@ -20,12 +20,6 @@ db = SQLAlchemy()
 
 # 	created_a = db.relationship('CreatedAchievements')
 
-# 	def __init__(self, id, username, password, achievement_id):
-# 		self.id = id
-# 		self.username = username
-# 		self.password = password
-# 		self.achievement_id = achievement_id
-
 # 	def __repr__(self):
 # 		return "<Username id=%d name=%s>" % (self.id, self.username)
 
@@ -41,11 +35,6 @@ class CreatedAchievements(db.Model):
 	weekdays = db.Column(db.String, nullable=False)
 	recurrence = db.Column(db.String, nullable=False)
 
-	# def __init__(self, achievement_name, weekdays, recurrence):
-	# 	self.achievement_id = achievement_id
-	# 	self.achievement_name = achievement_name
-	# 	self.weekdays = weekdays
-	# 	self.recurrence = recurrence
 
 	def __repr__(self):
 		return "<This is the user's achievement %s>" % (self.achievement_id)
@@ -64,21 +53,17 @@ def achievement_info():
 	db.session.commit()
 
 
-# class InspirationAchievements(db.Model):
-# 	"""Inspirational Achievements"""
+def set_val_user_id():
+    """Set value for the next user_id after seeding database"""
 
-# 	__tablename__ = "Inspirational"
+    # Get the Max user_id in the database
+    result = db.session.query(func.max(User.achievement_id)).one()
+    max_id = int(result[0])
 
-# 	inspiration_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-# 	inspiration_name = db.Column(db.String(30), nullable=False, unique=True)
-
-# 	def __init__(self, inspiration_id, inspiration_name)
-# 		self.inspiration_id = inspiration_id
-# 		self.inspiration_name = inspiration_name
-
-# 	def __repr__(self):
-# 		return "<Great, you created an app %s>" % (self.inspiration_name)
-
+    # Set the value for the next user_id to be max_id + 1
+    query = "SELECT setval('users_user_id_seq', :new_id)"
+    db.session.execute(query, {'new_id': max_id + 1})
+    db.session.commit()
 
 # Helper functions
 
@@ -86,8 +71,7 @@ def connect_to_db(app):
     """Connect to database"""
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///achievements'
-    app.config['SQLALCHEMY_ECHO'] = True
-    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db.app = app
     db.init_app(app)
 
