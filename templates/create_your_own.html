@@ -5,47 +5,31 @@
 <body>
 <h1>When do you want to do this?</h1>
 
-    <form action = "/create_your_own" method="POST">
+    <form action = "/created" method="POST">
 
-        <label> Name your achievement:
+        Name your achievement:
             <input type="text" name="nameofachievement">
-        </label>
     <br><br>
-
-        <label id="achievementdayid" name="achievementday"> I only want to do it on specific days:
-            S<input type="checkbox" value="S" name="saturday">
-            M<input type="checkbox" value="M" name="monday">
-            T<input type="checkbox" value="T" name="tuesday">
-            W<input type="checkbox" value="W" name="wednesday">
-            T<input type="checkbox" value="T" name="thursday">
-            F<input type="checkbox" value="F" name="friday">
-            S<input type="checkbox" value="S" name="saturday">
-        </label>
-    <br><br>
-
-        <label>I want to do this
-        <select id="days_of_the_week" name="numberftimes">
-            <option value="one">one</option>
-            <option value="two">two</option>
-            <option value="three">three</option>
-            <option value="four">four</option>
-            <option value="five">five</option>
-            <option value="six">six</option>
-            <option value="seven">seven</option>
-            <option value="eight">eight</option>
-            <option value="nine">nine</option>
-            <option value="ten">ten</option>
+        I only want to do it on specific days:
+        <select id ="weekdaysid" name="weekdays">
+            Sunday<option value="Sunday" name="sunday">
+            Monday<option value="Monday" name="monday">
+            Tuesday<option value="Tuesday" name="tuesday">
+            Wednesday<option value="Wednesday" name="wednesday">
+            Thursday<option value="Tuesday" name="thursday">
+            Friday<option value="Friday" name="friday">
+            Saturday<option value="Saturday" name="saturday">
         </select>
-        </label>
-        
-        <label> times a
+    <br><br>
+
+        I want to do this:
+  
         <select id ="recurrenceid" name="recurrence">
-            <option value="day">day</option>
-            <option value="week">week</option>
-            <option value="month">month</option>
-            <option value="year">year</option>
+            <option value="every day!">every day!</option>
+            <option value="sometime during the week">sometime during the week</option>
+            <option value="I'm content if I do this at least once a month">I'm content if I do this at least once a month</option>
+            <option value="every year!">every year!</option>
         </select>
-        </label>
         <input type="submit" id ="save_button" value="&#9829; save &#9829;">
 
     </form>

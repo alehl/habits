@@ -1,9 +1,14 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for, jsonify
+from flask_sqlalchemy import SQLAlchemy
+import model
+from model import CreatedAchievements, connect_to_db
 import os
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
+
+db = SQLAlchemy()
 
 # These functions create a session for the user. 
 @app.route('/')
@@ -49,6 +54,8 @@ def login():
 
     return 'Not logged in!'
 
+#This adds the username to db if it's not there already.
+
     username = request.form.get("username")
     password = request.form.get("password")
 
@@ -62,14 +69,13 @@ def login():
         db.session.add(new_user)
         db.session.commit()
 
-        
+
 @app.route('/logout')
 def logout():
     """Logs user out of a session"""
 
     session.pop('user', None)
     return 'Dropped!'
-
 
 @app.route('/pick_one', methods =['GET', 'POST'])
 def pick_one():
@@ -91,24 +97,33 @@ def see_results():
         return render_template("created_achievements.html")
 
 
-@app.route('/created', methods = ['GET', 'POST'])
+@app.route('/created', methods = ['POST'])
 def show_created_chosen_achievements():
     """This will handle all submissions from create_your_own.html
      and choose_achievement.html"""
 
     nameofachievement = request.form.get('nameofachievement')
-    achievementday = request.form.get('achievementday')
-    numberftimes = request.form.get('numberftimes')
+    weekdays = request.form.get('weekdays')
     recurrence = request.form.get('recurrence')
 
-    return render_template(overview.html,
-        nameofachievement = nameofachievement,
-        achievementday = achievementday,
-        numberftimes = numberftimes,
-        recurrence = recurrence)
+    # actually add this to db
 
+    new_achievement = CreatedAchievements(
+        achievement_name=nameofachievement, 
+        weekdays=weekdays,
+        recurrence=recurrence)
+
+    db.session.add(new_achievement)
+    db.session.commit()
+
+    return render_template('new_achievements.html',
+                            nameofachievement = nameofachievement,
+                            weekdays = weekdays,
+                            recurrence = recurrence)
+    
 
 if __name__ == '__main__':
+    connect_to_db(app)
     app.run(debug=True)
 
     app.run()
