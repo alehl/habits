@@ -1,7 +1,7 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import model
-from model import CreatedAchievements, connect_to_db
+from model import CreatedAchievements, connect_to_db, Users
 import os
 
 app = Flask(__name__)
@@ -10,7 +10,10 @@ app.secret_key = os.urandom(24)
 
 db = SQLAlchemy()
 
-# These functions create a session for the user. 
+# These functions create a session for the user.
+
+####################################################
+
 @app.route('/')
 def index():
 
@@ -19,16 +22,7 @@ def index():
     return "This is the homepage"
 
 
-@app.route('/choose_achievement')
-def chooseachievement():
-
-    """Two options: create new achievement or select one from the app"""
-
-    if g.user:
-        return render_template('choose_achievement.html')
-
-    return redirect(url_for('index'))
-
+####################################################
 
 @app.before_request
 def before_request():
@@ -36,6 +30,8 @@ def before_request():
     if 'user' in session:
         g.user = session['user']
 
+
+####################################################!
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -49,43 +45,53 @@ def login():
             return redirect('/choose_achievement')
 
     return render_template('index.html')
+    
     if 'user' in session:
         return session['user']
+    
 
-    return 'Not logged in!'
+####################################################!
 
-#This adds the username to db if it's not there already.
+@app.route('/choose_achievement', methods=['POST', 'GET'])
+def chooseachievement():   
+    """Two options: create new achievement or select one from the app"""
 
     username = request.form.get("username")
     password = request.form.get("password")
 
-    checks = User.query.filter_by(username=username).first()
 
-    if checks == None:
+    # new_user = Users(username=username,
+    #                 password=password)
 
-        new_user = g.user(username=username,
-                    password=password)
+    # db.session.add(new_user)
+    # db.session.commit()
 
-        db.session.add(new_user)
-        db.session.commit()
 
+    # if g.user:
+    if 'user':
+        return render_template('choose_achievement.html',
+                            username=username,
+                            password=password)
+        
+        return redirect(url_for('index'))
+
+
+
+####################################################
 
 @app.route('/logout')
 def logout():
     """Logs user out of a session"""
 
     session.pop('user', None)
-    return 'Dropped!'
+    return render_template("homepage.html")
 
-@app.route('/pick_one', methods =['GET', 'POST'])
-def pick_one():
-    """This will take the user to the 'create your own' page"""
 
-    return render_template("create_your_own.html")
+####################################################
 
-@app.route('/results')
+@app.route('/results', methods =['GET', 'POST'])
 def see_results():
-    """This will display what the user created or the achievement they selected"""
+    """This will display the achievement they selected/created"""
 
     new_achievement = request.values.get('createnew')
     selected_achievement = request.values.get('choosefrom')
@@ -96,6 +102,7 @@ def see_results():
     if selected_achievement == "old":
         return render_template("created_achievements.html")
 
+####################################################
 
 @app.route('/created', methods = ['POST'])
 def show_created_chosen_achievements():
@@ -121,6 +128,7 @@ def show_created_chosen_achievements():
                             weekdays = weekdays,
                             recurrence = recurrence)
     
+####################################################
 
 if __name__ == '__main__':
     connect_to_db(app)
