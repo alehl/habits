@@ -26,9 +26,9 @@ def index():
 
 @app.before_request
 def before_request():
-    g.user = None
-    if 'user' in session:
-        g.user = session['user']
+    g.username = None
+    if 'username' in session:
+        g.username = session['username']
 
 
 ####################################################!
@@ -38,16 +38,16 @@ def login():
     """'password' is the default pwd and begins session if entered"""
 
     if request.method == 'POST':
-        session.pop('user', None)
+        session.pop('username', None)
 
         if request.form['password'] == 'password':
-            session['user'] = request.form['username']
-            return redirect('/choose_achievement')
+            session['username'] = request.form['username']
+            return redirect('/choose_achievement') # If user posts 'password' they will be directed to the /choose_achievement page.
 
-    return render_template('index.html')
+    return render_template('index.html') #If the user doesn't enter 'password' in the password field, the ligin page will reload.
     
-    if 'user' in session:
-        return session['user']
+    if 'username' in session:
+        return session['username']
     
 
 ####################################################!
@@ -68,7 +68,7 @@ def chooseachievement():
 
 
     # if g.user:
-    if 'user':
+    if 'username':
         return render_template('choose_achievement.html',
                             username=username,
                             password=password)
@@ -83,7 +83,7 @@ def chooseachievement():
 def logout():
     """Logs user out of a session"""
 
-    session.pop('user', None)
+    session.pop('username', None)
     return render_template("homepage.html")
 
 
