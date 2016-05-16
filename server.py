@@ -56,24 +56,14 @@ def login():
 def chooseachievement():   
     """Two options: create new achievement or select one from the app"""
 
-    username = request.form.get("username")
-    password = request.form.get("password")
+    username = request.form.get('username')
 
+    new_user = Users(username=username)
+    db.session.add(new_user)
+    db.session.commit()
 
-    # new_user = Users(username=username,
-    #                 password=password)
-
-    # db.session.add(new_user)
-    # db.session.commit()
-
-
-    # if g.user:
-    if 'username':
-        return render_template('choose_achievement.html',
-                            username=username,
-                            password=password)
-        
-        return redirect(url_for('index'))
+    return render_template('choose_achievement.html',
+                            username=username)
 
 
 
