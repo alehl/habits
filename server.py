@@ -1,7 +1,6 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
-import model
-from model import CreatedAchievements, connect_to_db
+from model import CreatedAchievements, connect_to_db, User
 import os
 
 app = Flask(__name__)
@@ -17,7 +16,8 @@ def index():
 
     """Homepage"""
 
-    return "This is the homepage"
+    # return "This is the homepage"
+    return render_template('index.html')
 
 ##################################################
 
@@ -27,7 +27,7 @@ def chooseachievement():
     """Two options: create new achievement or select one from the app"""
 
     if g.user:
-        return render_template('choose_achievement.html')
+        return render_template('choose_achievement.html', username=session['user'])
 
     return redirect(url_for('index'))
 
@@ -41,37 +41,47 @@ def before_request():
 
 ##################################################
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
     """'password' is the default pwd and begins session if entered"""
 
-    if request.method == 'POST':
-        session.pop('user', None)
+    # if request.method == 'POST':
+    #     session.pop('user', None)
+    print "In login route"
 
-        if request.form['password'] == 'password':
-            session['user'] = request.form['username']
-            return redirect('/choose_achievement')
+    if request.form['password'] == 'password':
+        print "Password token"
+        session['user'] = request.form['username']
 
-    return render_template('index.html')
-    if 'user' in session:
-        return session['user']
 
-    return 'Not logged in!'
+
+
+
+# if 'user' in session:
+#     return session['user']
+
+# return 'Not logged in!'
 
 #This adds the username to db if it's not there already.
 
-    username = request.form.get("username")
-    password = request.form.get("password")
+        username = request.form.get("username")
+        password = request.form.get("password")
 
-    checks = User.query.filter_by(username=username).first()
+        checks = User.query.filter_by(username=session['user']).first()
 
-    if checks == None:
+        if checks == None:
 
-        new_user = g.user(username=username,
-                    password=password)
+            new_user = User(username=username)
 
-        db.session.add(new_user)
-        db.session.commit()
+            db.session.add(new_user)
+            db.session.commit()
+            print "added to DB"
+
+        return render_template('choose_achievement.html', username=username)
+        
+        # else:
+        #     Clear the feild in the form
+        #     display an error
 
 ##################################################
 
@@ -113,14 +123,12 @@ def show_created_chosen_achievements():
      and choose_achievement.html"""
 
     nameofachievement = request.form.get('nameofachievement')
-    weekdays = request.form.get('weekdays')
     recurrence = request.form.get('recurrence')
 
     # actually add this to db
 
     new_achievement = CreatedAchievements(
-        achievement_name=nameofachievement, 
-        weekdays=weekdays,
+        achievement_name=nameofachievement,
         recurrence=recurrence)
 
     db.session.add(new_achievement)
@@ -128,10 +136,12 @@ def show_created_chosen_achievements():
 
     return render_template('new_achievements.html',
                             nameofachievement = nameofachievement,
-                            weekdays = weekdays,
                             recurrence = recurrence)
-    
+
+
 ################################################## 
+
+
 
 if __name__ == '__main__':
     connect_to_db(app)

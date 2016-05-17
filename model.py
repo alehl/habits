@@ -8,21 +8,42 @@ db = SQLAlchemy()
 #######################################
 # Model Definitions
 
-# class Users(db.Model):
-# 	"""Users Table"""
+class User(db.Model):
+	"""Users Table"""
 
-# 	__tablename__ = "users"
+	__tablename__ = "users"
 
-# 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-# 	username = db.Column(db.String(16), nullable=False, unique=True)
-# 	password = db.Column(db.String(16), nullable=False, default='password')
-# 	achievement_id = db.Column(db.Integer, db.ForeignKey('CreatedAchievements.achievement_id'))
+	userid = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	username = db.Column(db.String(16), nullable=False, unique=True)
 
-# 	created_a = db.relationship('CreatedAchievements')
 
-# 	def __repr__(self):
-# 		return "<Username id=%d name=%s>" % (self.id, self.username)
+	def __repr__(self):
+		return "<Username id=%d name=%s>" % (self.userid, self.username)
 
+
+def user_info():
+	"""Add data to users table"""
+
+	User.query.delete()
+
+	NewU = User(userid='userid',
+				username='username')
+
+	db.session.all([NewU])
+	db.session.commit()
+
+
+def set_val_user_id():
+    """Set value for the next achievement_id"""
+
+    # Get the Max achievement_id in the database
+    result = db.session.query(func.max(User.user_id)).one()
+    max_id = int(result[0])
+
+    # Set the value for the next id to be max_id + 1
+    query = "SELECT setval('users_user_id_seq', :new_id)"
+    db.session.execute(query, {'new_id': max_id + 1})
+    db.session.commit()
 
 
 class CreatedAchievements(db.Model):
@@ -31,8 +52,7 @@ class CreatedAchievements(db.Model):
 	__tablename__ = "created_achievements"
 
 	achievement_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	achievement_name = db.Column(db.String(30), nullable=False, unique=True)
-	weekdays = db.Column(db.String, nullable=False)
+	achievement_name = db.Column(db.String(30), nullable=False, unique=False)
 	recurrence = db.Column(db.String, nullable=False)
 
 
@@ -41,22 +61,21 @@ class CreatedAchievements(db.Model):
 
 
 def achievement_info():
-	"""add data to database"""
+	"""Add data to create_achievements table"""
 
 	CreatedAchievements.query.delete()
 
-	NewA = CreatedAchievements(achievement_name='achievement_name', 
-							weekdays='weekdays',
-							recurrence='recurrence')
+	NewA = CreatedAchievements(achievement_name='achievement_name',
+								recurrence='recurrence')
 
 	db.session.all([NewA])
 	db.session.commit()
 
 
-def set_val_user_id():
-    """Set value for the next user_id after seeding database"""
+def set_val_achievement_id():
+    """Set value for the next achievement_id"""
 
-    # Get the Max user_id in the database
+    # Get the Max achievement_id in the database
     result = db.session.query(func.max(User.achievement_id)).one()
     max_id = int(result[0])
 
