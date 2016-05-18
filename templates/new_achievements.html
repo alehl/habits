@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<title>TEST</title>
+<script src="static/Storage.js"></script>
+<link rel="stylesheet" href="static/StorageStyle.css">
+</head>
+
+
+<body>
+
+	<h1>Achievements</h1>
+		<p>Your achievement is: {{ nameofachievement }}<p>
+		<p>Recurrence: {{ recurrence }}</p>
+
+<!-- 
+	<div id="Container" name="goalList">
+		<ul id="theList" contenteditable>
+			<li>First Item</li>
+		</ul>
+
+	</div> -->
+	<form name=ShoppingList>
+
+		<div id="Add more goals">
+			<table>
+				<tr>
+
+					<td><b>New Goal:</b><input type=text name=name></td>
+					<td><b>Recurrence:</b><input type=text name=data></td>
+
+				</tr>
+
+				<tr>
+					<td>
+					    <input type=button value="Save"   onclick="SaveItem()"> 
+					    <input type=button value="Modify" onclick="ModifyItem()"> 
+					    <input type=button value="Remove" onclick="RemoveItem()">
+					  </td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="items_table">
+			<h2>List of goals</h2>
+			<table id=list></table>
+			<p>
+				<label><input type=button value="Clear" onclick="ClearAll()">
+					<i>* Removes all goals</i></label>
+			</p>
+		</div>
+	</form>
+
+
+	<form action='/results'>
+		<button id= "goals_in_progress" name="choosefrom" value="old">GOALS IN PROGRESS</button>
+	</form>
+
+<script>
+
+
+</script>
+
+
+
+</body>
+</html>
+
