@@ -3,7 +3,7 @@
 	<title>Choose your Achievement</title>
 </head>
 <body>
-	<h1>Welcome to the session! Please choose one of the following options:</h1>
+	<h1 action='/choose_achievement' method="POST", "GET">This is the story about a little bear called {{ username }}. This little bear always forgets where everything is. Help {{ username }} set some habits and restore order for once!</h1>
 
 <!-- This will take you to the page where you will create your own achievement -->
 
@@ -11,7 +11,7 @@
 
 		<span id="ok-create-achievement"></span>
 		<button type="submit" id= "create_confirmation" name="createnew" value="new">
-			CREATE YOUR OWN ACHIEVEMENT</button>
+			CREATE A NEW GOAL</button>
 	</form>
 
 <script>
@@ -27,10 +27,8 @@
 </script>
 
 	<form action='/results'>
-
-		<span id="predetermined-achievement"></span>
-		<button id= "predetermined_confirmation" name="choosefrom" value="old">
-			GET SOME INSPIRATION</button>
+		<button id= "goals_in_progress" name="choosefrom" value="old">
+			GOALS IN PROGRESS</button>
 	</form>
 
 <!-- This will take you to the page where you can select an achievement that was already created. -->

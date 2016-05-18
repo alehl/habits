@@ -54,9 +54,6 @@ def login():
         session['user'] = request.form['username']
 
 
-
-
-
 # if 'user' in session:
 #     return session['user']
 
@@ -80,7 +77,7 @@ def login():
         return render_template('choose_achievement.html', username=username)
         
         # else:
-        #     Clear the feild in the form
+        #     Clear the field in the form
         #     display an error
 
 ##################################################
