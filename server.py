@@ -139,6 +139,13 @@ def show_created_chosen_achievements():
 ################################################## 
 
 
+@app.route('/todo')
+def todo():
+    """Render complete-index.html"""
+
+    return render_template('complete-index.html')
+
+################################################## 
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(debug=True)

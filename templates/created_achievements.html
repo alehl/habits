@@ -1,40 +1,113 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-<title>TEST</title>
-<script src="static/Storage.js"></script>
-<link rel="stylesheet" href="static/calendar.css">
-</head>
-<h1>{{ additionalgoals }}  This is where you get to see your achievements...</h1>
-<div class="month"> 
-  <ul>
-    <li>Some random week<br>
-    </li>
-  </ul>
-</div>
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: "Lato", sans-serif;}
 
-<ul class="weekdays">
-  <li>Monday</li>
-  <li>Tuesday</li>
-  <li>Wednesday</li>
-  <li>Thursday</li>
-  <li>Friday</li>
-  <li>Saturday</li>
-  <li>Sunday</li>
-</ul>
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
 
-<ul class="days"> 
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+/* Float the list items side by side */
+ul.tab li {float: left;}
 
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
 
-</ul>
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+</style>
 <body>
 
+<p>HABITS</p>
+
+<ul class="tab">
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Monday')">Monday</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Tuesday')">Tuesday</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Wednesday')">Wednesday</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Thursday')">Thursday</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Friday')">Friday</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Saturday')">Saturday</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Sunday')">Sunday</a></li>
+</ul>
+
+<div id="Monday" class="tabcontent">
+  <h3>Monday</h3>
+  <p>Monday</p>
+</div>
+
+<div id="Tuesday" class="tabcontent">
+  <h3>Tuesday</h3>
+  <p>Tuesday</p> 
+</div>
+
+<div id="Wednesday" class="tabcontent">
+  <h3>Wednesday</h3>
+  <p>Wednesday</p>
+</div>
+
+<div id="Thursday" class="tabcontent">
+  <h3>Thursday</h3>
+  <p>Thursday</p>
+</div>
+
+<div id="Friday" class="tabcontent">
+  <h3>Friday</h3>
+  <p>Friday</p>
+</div>
+
+<div id="Saturday" class="tabcontent">
+  <h3>Saturday</h3>
+  <p>Saturday</p>
+</div>
+
+<div id="Sunday" class="tabcontent">
+  <h3>Sunday</h3>
+  <p>Sunday</p>
+</div>
+
+<script>
+function openCity(week, weekDay) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tabcontent.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(weekDay).style.display = "block";
+    week.currentTarget.className += " active";
+}
+</script>
+     
 </body>
-</html>
+</html> 

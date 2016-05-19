@@ -14,7 +14,7 @@ class User(db.Model):
 	__tablename__ = "users"
 
 	userid = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	username = db.Column(db.String(16), nullable=False, unique=True)
+	username = db.Column(db.String(100000), nullable=False, unique=True)
 
 
 	def __repr__(self):

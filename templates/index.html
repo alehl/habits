@@ -1,35 +1,32 @@
 
 
 <head>
-    <title>Habits App Home</title>
+<style>
+.button {
+  padding: 15px 25px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #ffa500;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
- 
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
- </head>
+.button:hover {background-color: #ffa500}
+
+.button:active {
+  background-color: #ffa500;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
 
 <body>
 <h1>Welcome!</h1>
 
-    <div class="container">
-        <div class="header">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a>
-                    </li>
-                    <li role="presentation"><a href="#">Tutorial</a>
-                    </li>
-                    <li role="presentation"><a href="NULL">Goals</a>
-                    </li>
-                    <li role="presentation"><a href="NULL">Stats</a>
-                    </li>
-                    <li role="presentation"><a href="NULL">Calendar</a>
-                    </li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Habits App</h3>
-        </div>
- 
         <div class="jumbotron">
             <h1>Habits App</h1>
             <div>
@@ -38,7 +35,7 @@
                 <p>To get started just type your name as your username and type "password" in the password field.</p>
                 Username: <input type="text" action="/login" method = "POST" name="username"><br><br>
                 Password: <input type="password" name="password"><br><br>
-                <input type="submit">
+                <input type="submit" class ="button"><span></span></button>
             </form> 
         </div>
     </div>

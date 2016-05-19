@@ -1,11 +1,70 @@
 <!doctype html>
 <html>
 <head>
+<style>
+.button {
+  padding: 6px 6px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #ffa500;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #ffa500}
+
+.button:active {
+  background-color: #ffa500;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+/* Dropdown Button */
+.dropbtn {
+    background-color: #ffa500;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffa500;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #ffa500;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+}
+</style>
     <meta charset="UTF-8">
     <title>Create your own</title>
 </head>
 
 <body>
+<script src ="https://code.jquery.com/jquery.js"></script>
+
 <h1>Set your goal here.</h1>
 
     <form action = "/created" method="POST">
@@ -16,14 +75,17 @@
         <br><br>
 
         I want to do this:
-  
-        <select id ="recurrenceid" name="recurrence">
+
+<div class="dropdown">
+        <select id ="recurrenceid" name="recurrence" button class="dropbtn">
             <option value="every day!">every day!</option>
             <option value="sometime during the week">sometime during the week</option>
             <option value="I'm content if I do this at least once a month">I'm content if I do this at least once a month</option>
             <option value="every year!">every year!</option>
         </select>
-        <input type="submit" id ="save_button" value="&#9829; save &#9829;">
+  </div>
+</div>
+        <input type="submit" class= "button" id ="save_button" value="&#9829; save &#9829;">
 
     </form>
 
