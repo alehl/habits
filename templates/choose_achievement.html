@@ -11,24 +11,23 @@
 
 		<span id="ok-create-achievement"></span>
 		<button type="submit" id= "create_confirmation" name="createnew" value="new">
-			CREATE A NEW GOAL</button>
+			CREATE YOUR OWN ACHIEVEMENT</button>
 	</form>
 
 <script>
 		var createAchievement = document.getElementById("ok-create-achievement");
 		var button_left = document.getElementById("create_confirmation")
-
 		function changeMessage() {
 			button_left.innerText = "Ok, let's do it!"
 		}
-
 	button_left.addEventListener("click", changeMessage);
-
 </script>
 
 	<form action='/results'>
-		<button id= "goals_in_progress" name="choosefrom" value="old">
-			GOALS IN PROGRESS</button>
+
+		<span id="predetermined-achievement"></span>
+		<button id= "predetermined_confirmation" name="choosefrom" value="old">
+			GET SOME INSPIRATION</button>
 	</form>
 
 <!-- This will take you to the page where you can select an achievement that was already created. -->
@@ -36,13 +35,11 @@
 <script>
 		var chooseAchievement = document.getElementById("predetermined-achievement");
 		var button_right = document.getElementById("predetermined_confirmation")
-
 		function changeMessage() {
 			button_right.innerText = "Let's go!"
 		}
 		
 	button_right.addEventListener("click", changeMessage);
-
 </script>
 
 
