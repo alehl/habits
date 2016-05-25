@@ -1,10 +1,11 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from model import CreatedAchievements, connect_to_db, User
+from flask_debugtoolbar import DebugToolbarExtension
 import os
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = "os.urandom(24)"
 
 
 db = SQLAlchemy()
@@ -91,14 +92,6 @@ def logout():
 
 ##################################################
 
-@app.route('/pick_one', methods =['GET', 'POST'])
-def pick_one():
-    """This will take the user to the 'create your own' page"""
-
-    return render_template("create_your_own.html")
-
-##################################################
-
 @app.route('/results')
 def see_results():
     """This will display what the user created or the achievement they selected"""
@@ -107,33 +100,51 @@ def see_results():
     selected_achievement = request.values.get('choosefrom')
 
     if new_achievement == "new":
-        return render_template("create_your_own.html")
+        return render_template("new_achievements.html")
 
     if selected_achievement == "old":
         return render_template("created_achievements.html")
+
 
 ##################################################
 
 @app.route('/created', methods = ['POST'])
 def show_created_chosen_achievements():
-    """This will handle all submissions from create_your_own.html
-     and choose_achievement.html"""
+    """This will handle all submissions from new_achievements.html"""
+    print "in created route"
 
-    nameofachievement = request.form.get('nameofachievement')
-    recurrence = request.form.get('recurrence')
-
+    mo_goal = request.form.get('name1')
+    mo_notes = request.form.get('data1')
+    tu_goal = request.form.get('name2')
+    tu_notes = request.form.get('data2')
+    we_goal = request.form.get('name3')
+    we_notes = request.form.get('data3')
+    th_goal = request.form.get('name4')
+    th_notes = request.form.get('data4')
+    fr_goal = request.form.get('name5')
+    fr_notes = request.form.get('data5')
+    sa_goal = request.form.get('name6')
+    sa_notes = request.form.get('data6')
+    su_goal = request.form.get('name7')
+    su_notes = request.form.get('data7')
+    print "in created route"
+    print mo_notes, mo_goal, tu_notes, tu_goal, su_notes, su_goal
     # actually add this to db
 
-    new_achievement = CreatedAchievements(
-        achievement_name=nameofachievement,
-        recurrence=recurrence)
+    new_achievement = CreatedAchievements(mo_goal=mo_goal, mo_notes=mo_notes,
+                                        tu_goal=tu_goal, tu_notes=tu_notes,
+                                        we_goal=we_goal, we_notes=we_notes,
+                                        th_goal=th_goal, th_notes=th_notes,
+                                        fr_goal=fr_goal, fr_notes=fr_notes,
+                                        sa_goal=sa_goal, sa_notes=sa_notes,
+                                        su_goal=su_goal, su_notes=su_notes)
 
     db.session.add(new_achievement)
     db.session.commit()
 
-    return render_template('new_achievements.html',
-                            nameofachievement = nameofachievement,
-                            recurrence = recurrence)
+    username=session['user']
+
+    return render_template('new_achievements.html', username=username)
 
 
 ################################################## 
@@ -147,8 +158,10 @@ def todo():
 
 ################################################## 
 if __name__ == '__main__':
+    app.debug = True
     connect_to_db(app)
-    app.run(debug=True)
+
+    DebugToolbarExtension(app)
 
     app.run()
 

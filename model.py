@@ -52,8 +52,23 @@ class CreatedAchievements(db.Model):
 	__tablename__ = "created_achievements"
 
 	achievement_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	achievement_name = db.Column(db.String(30), nullable=False, unique=False)
-	recurrence = db.Column(db.String, nullable=False)
+	mo_goal = db.Column(db.String(500), nullable=True, unique=False)
+	mo_notes = db.Column(db.Text)
+	tu_goal = db.Column(db.String(500), nullable=True, unique=False)
+	tu_notes = db.Column(db.Text)
+	we_goal = db.Column(db.String(500), nullable=True, unique=False)
+	we_notes = db.Column(db.Text)
+	th_goal = db.Column(db.String(500), nullable=True, unique=False)
+	th_notes = db.Column(db.Text)
+	fr_goal = db.Column(db.String(500), nullable=True, unique=False)
+	fr_notes = db.Column(db.Text)
+	sa_goal = db.Column(db.String(500), nullable=True, unique=False)
+	sa_notes = db.Column(db.Text)
+	su_goal = db.Column(db.String(500), nullable=True, unique=False)
+	su_notes = db.Column(db.Text)
+
+	# achievement_name = db.Column(db.String(30), nullable=False, unique=False)
+	# recurrence = db.Column(db.String, nullable=False)
 
 
 	def __repr__(self):
@@ -65,8 +80,16 @@ def achievement_info():
 
 	CreatedAchievements.query.delete()
 
-	NewA = CreatedAchievements(achievement_name='achievement_name',
-								recurrence='recurrence')
+	NewA = CreatedAchievements (mo_goal='mo_goal', mo_notes='mo_notes',
+                            tu_goal='tu_goal', tu_notes='tu_notes',
+                            we_goal='we_goal', we_notes='we_notes',
+                            th_goal='th_goal', th_notes='th_notes',
+                            fr_goal='fr_goal', fr_notes='fr_notes',
+                            sa_goal='sa_goal', sa_notes='sa_notes',
+                            su_goal='su_goal', su_notes='su_notes')
+
+	# NewA = CreatedAchievements(achievement_name='achievement_name',
+	# 							recurrence='recurrence')
 
 	db.session.all([NewA])
 	db.session.commit()
@@ -89,8 +112,9 @@ def set_val_achievement_id():
 def connect_to_db(app):
     """Connect to database"""
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///achievements'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///achievments'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    # app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
 
