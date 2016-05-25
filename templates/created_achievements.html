@@ -239,8 +239,19 @@ ul {
   background: #b3ffec;
 }
 
+</style>
 
+<style>
+.section__title {
+  height: 400px;
+  width: 900px;
+  margin: 50px auto;
+}
 
+#add-todo{
+  background: #ff99c2;
+  font-style: 'calibri';
+}
 
 </style>
 <body>
@@ -289,36 +300,33 @@ ul {
 </nav>
 
 <div class="page" id="tabs">
-  <section class="section section--active color1" data-letter="">
-    <article class="section__wrapper">
+<!--   <section class="section section--active color1"> -->
       <h1 class="section__title">Today</h1>
-      <div id="Today" class="tabcontent">
-        <div class="container">
+        <button id="add-todo">Add a goal</button>
             <div id="to-do">
-                <h3>Things I want to accomplish</h2>
-                <button id="add-todo">Add a todo item</button>
+                <h1>Things I want to accomplish</h1>
                     <ul id="todo-list">
                     </ul>
             </div>
+
             <div id="completed">
-                <h3>Things I actually completed</h2>
+                <h2 class="completed_goals">Completed Tasks</h2>
                     <ul id="completed-list">
                     </ul>
             </div>
             <div id="new-todo" title="Add to-do item">
           <form>
             <p>
-              <label for="task">Name:</label>
+              <label for="task">Task Name:</label>
               <input type="text" name="task" id="task">
             </p>
             <p>
-              <label for="due-date">Due Date:</label>
+              <label id ="Calendar" for="due-date">Due Date:</label>
               <input type="text" name="due-date" id="due-date">
             </p>
           </form>
             </div>
         </div>
-    </article>
   </section>
 </body>
 
@@ -405,8 +413,6 @@ $(document).ready(function(e) {
     $('#new-todo').dialog('open');
   }); // end click
   $('#new-todo').dialog({
-  width: 350,
-  height: 300,
   modal: true,
   autoOpen: false,
   close: function() {
@@ -417,27 +423,25 @@ $(document).ready(function(e) {
       var taskName = $('#task').val();
       var dueDate = $('#due-date').val();
       var beginLi = '<li><span class="done">%</span><span class="delete">x</span>';
-      var taskLi = '<span class="task">' + taskName + '</span>';
-      var dateLi = '<span class="due-date">' + dueDate + '</span>';
+      var taskLi = '<span class="task">' +   taskName + '</span>';
+      var dateLi = '<span class="due-date">' +   dueDate + '</span>';
       var endLi = '</li>';
       $('#todo-list').prepend(beginLi + taskLi + dateLi + endLi);
       $('#todo-list').hide().slideDown(250).find('li:first')
             .animate({
-          'background-color': 'rgb(255,255,204)'
+          'background-color': '#ff99c2'
         },250)
           .animate({
-          'background-color': 'white'
-        },750).animate; // end animate
+          'background-color': '#d9b3ff'
+        },250).animate; // end animate
       $(this).dialog('close');
     },
     "Cancel" : function() {
       $(this).dialog('close');
     }
   }
-  }); // end dialog
-  
-  // need to delegate to make make click apply
-  // to newly added items
+  }); 
+
   $('#todo-list').on('click','.done',function(e) {
     var $taskItem = $(this).parent("li");
     var $copy = $taskItem.clone();
