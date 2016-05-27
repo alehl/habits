@@ -3,7 +3,7 @@
 <head>
 <title>TEST</title>
 <script src="http://momentjs.com/downloads/moment.min.js"></script>
-
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -269,8 +269,14 @@ ul {
   background: #b3ffec;
 }
 
-#add-todo6 {
-  
+#new-todo {
+  display: none;
+
+}
+
+.dialog { 
+  display: none; 
+
 }
 
 .logo {
@@ -404,11 +410,11 @@ ul {
               "Add task" : function() {
                 var taskName = $('#task').val();
                 var dueDate = $('#due-date').val();
-                var beginLi = '<li><span class="done"> &#x2713; </span><span class="delete"> &#10006; </span>';
+                var beginLi = '<li><span class="done"><i class="fa fa-check">&nbsp;</i></span><span class="delete"><i class="fa fa-times">&nbsp;</i></span>';
                 var taskLi = '<span class="task">' +   taskName + '</span>';
                 var dateLi = '<span class="due-date">' +   dueDate + '</span>';
                 var endLi = '</li>';
-                $('#todo-list').prepend(beginLi + taskLi + dateLi + endLi);
+                $('#todo-list').prepend(beginLi + taskLi + dateLi, + endLi);
                 $('#todo-list').hide().slideDown(250).find('li:first')
                       .animate({
                     'background-color': '#ff99c2'
@@ -514,7 +520,7 @@ ul {
                 $(this).dialog('close');
               },
               "Cancel" : function() {
-                $(this).dialog('close1');
+                $(this).dialog('close');
               }
             }
             }); 
@@ -611,7 +617,7 @@ ul {
                 $(this).dialog('close');
               },
               "Cancel" : function() {
-                $(this).dialog('close2');
+                $(this).dialog('close');
               }
             }
             }); 
@@ -706,7 +712,7 @@ ul {
                 $(this).dialog('close');
               },
               "Cancel" : function() {
-                $(this).dialog('close3');
+                $(this).dialog('close');
               }
             }
             }); 
@@ -800,7 +806,7 @@ ul {
                 $(this).dialog('close');
               },
               "Cancel" : function() {
-                $(this).dialog('close4');
+                $(this).dialog('close');
               }
             }
             }); 
@@ -894,7 +900,7 @@ ul {
                 $(this).dialog('close');
               },
               "Cancel" : function() {
-                $(this).dialog('close5');
+                $(this).dialog('close');
               }
             }
             }); 
@@ -988,7 +994,7 @@ ul {
                 $(this).dialog('close');
               },
               "Cancel" : function() {
-                $(this).dialog('close6');
+                $(this).dialog('close');
               }
             }
             }); 
@@ -1024,21 +1030,6 @@ ul {
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
 
 
-<script>
-function openDay(week, weekDay) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tabcontent.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(weekDay).style.display = "block";
-    week.currentTarget.className += " active";
-}
-</script>
 
 
 <script>
