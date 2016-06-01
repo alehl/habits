@@ -1,43 +1,77 @@
 
 
-<head>
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Weekly Planner Login</title>
+    
+<link rel="stylesheet" href="static/reset.css">
+<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel="stylesheet" href="static/style.css">
+
+  </head>
+
 <style>
-.button {
-  padding: 15px 25px;
-  font-size: 20px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #ffa500;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
 
-.button:hover {background-color: #ffa500}
-
-.button:active {
-  background-color: #ffa500;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 </style>
 
 <body>
-<h1>Welcome!</h1>
-
-        <div class="jumbotron">
-            <h1>Habits App</h1>
-            <div>
-                <h2>Please login</h2>
-            <form action="/login" method = "POST">
-                <p>To get started just type your name as your username and type "password" in the password field.</p>
-                Username: <input type="text" name="username"><br><br>
-                Password: <input type="password" name="password"><br><br>
-                <input type="submit" class ="button"><span></span></button>
-            </form> 
-        </div>
-    </div>
-
     
+<div class="pen-title">
+  <h1>Welcome!</h1><span>
+</div>
+
+<div class="container">
+
+  <div class="card"></div>
+  <div class="card">
+
+    <h1 class="title">Login</h1>
+    <form action="/login" method="POST">
+
+      <div class="input-container">
+        <input type="text" name="username" id="Username" required="required"/>
+        <label for="Username">Username</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="password" name="password" id="Password" required="required"/>
+        <label for="Password">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <input type="submit" class ="button"><span></span></button>
+      </div>
+    </form>
+  </div>
+  <div class="card alt">
+    <div class="toggle"></div>
+    <h1 class="title">Daily!
+      <div class="close"></div>
+    </h1>
+    <form>
+      <div class="input-container">
+        <div class="bar"></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<script>
+$('.toggle').on('click', function() {
+  $('.container').stop().addClass('active');
+});
+
+$('.close').on('click', function() {
+  $('.container').stop().removeClass('active');
+});
+</script>
+    
+    
+    
+  </body>
+</html>

@@ -1,10 +1,12 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask.ext.babel import Babel, gettext
 from model import CreatedAchievements, connect_to_db, User
 from flask_debugtoolbar import DebugToolbarExtension
-import os
+import os, time, datetime
 
 app = Flask(__name__)
+babel = Babel(app)
 app.secret_key = "os.urandom(24)"
 
 
@@ -22,6 +24,24 @@ def index():
 
 ##################################################
 
+@babel.localeselector
+def get_locale():
+    """Direct babel to use the language defined in the session."""
+    return g.get('current_lang', 'en')
+
+@app.before_request
+def before():
+    if request.view_args and 'lang_code' in request.view_args:
+        if request.view_args['lang_code'] not in ('es', 'en'):
+            return abort(404)
+        g.current_lang = request.view_args['lang_code']
+        request.view_args.pop('lang_code')
+
+@app.route('/<lang_code>/about')
+def about():
+    return render_template('about.html')
+
+##################################################
 @app.route('/choose_achievement')
 def chooseachievement():
 
@@ -108,10 +128,9 @@ def see_results():
 
 ##################################################
 
-@app.route('/created', methods = ['POST'])
+@app.route('/created', methods = ['POST', 'GET'])
 def show_created_chosen_achievements():
     """This will handle all submissions from new_achievements.html"""
-    print "in created route"
 
     mo_goal = request.form.get('name1')
     mo_notes = request.form.get('data1')
@@ -127,8 +146,6 @@ def show_created_chosen_achievements():
     sa_notes = request.form.get('data6')
     su_goal = request.form.get('name7')
     su_notes = request.form.get('data7')
-    print "in created route"
-    print mo_notes, mo_goal, tu_notes, tu_goal, su_notes, su_goal
     # actually add this to db
 
     new_achievement = CreatedAchievements(mo_goal=mo_goal, mo_notes=mo_notes,
@@ -143,9 +160,11 @@ def show_created_chosen_achievements():
     db.session.commit()
 
     username=session['user']
-
+    # now = datetime.datetime.now()
+    # today = now.date()
+    # moment = now.time()
     return render_template('new_achievements.html', username=username)
-
+    
 
 ################################################## 
 if __name__ == '__main__':
