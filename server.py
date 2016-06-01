@@ -27,7 +27,7 @@ def index():
 @babel.localeselector
 def get_locale():
     """Direct babel to use the language defined in the session."""
-    return g.get('current_lang', 'en')
+    return g.get('current_lang', 'es')
 
 @app.before_request
 def before():
@@ -37,7 +37,7 @@ def before():
         g.current_lang = request.view_args['lang_code']
         request.view_args.pop('lang_code')
 
-@app.route('/<lang_code>/about')
+@app.route('/$lt;lang_code&gt;/about')
 def about():
     return render_template('about.html')
 
@@ -48,7 +48,7 @@ def chooseachievement():
     """Two options: create new achievement or select one from the app"""
 
     if g.user:
-        return render_template('choose_achievement.html', username=session['user'])
+        return render_template('path_to_wp.html', username=session['user'])
 
     return redirect(url_for('index'))
 
@@ -95,7 +95,7 @@ def login():
             db.session.commit()
             print "added to DB"
 
-        return render_template('choose_achievement.html', username=username)
+        return render_template('path_to_wp.html', username=username)
         
         # else:
         #     Clear the field in the form
@@ -120,17 +120,14 @@ def see_results():
     selected_achievement = request.values.get('choosefrom')
 
     if new_achievement == "new":
-        return render_template("new_achievements.html")
-
-    if selected_achievement == "old":
-        return render_template("created_achievements.html")
+        return render_template("weekly_planner.html")
 
 
 ##################################################
 
 @app.route('/created', methods = ['POST', 'GET'])
 def show_created_chosen_achievements():
-    """This will handle all submissions from new_achievements.html"""
+    """This will handle all submissions from weekly_planner.html"""
 
     mo_goal = request.form.get('name1')
     mo_notes = request.form.get('data1')
@@ -163,7 +160,7 @@ def show_created_chosen_achievements():
     # now = datetime.datetime.now()
     # today = now.date()
     # moment = now.time()
-    return render_template('new_achievements.html', username=username)
+    return render_template('weekly_planner.html', username=username)
     
 
 ################################################## 
