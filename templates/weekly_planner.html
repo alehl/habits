@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weekly Planner</title>
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="static/wp_style.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
+
+</head>
+
+<body onload="startTime()">
+
+<nav class="nav nav--active">
+  <ul class="nav__list">
+    <li class="nav__item">
+      <a href="" class="nav__link">
+        <div class="nav__thumb color1" data-letter="M"></div>
+        <p class="nav__label">Monday</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="" class="nav__link">
+        <div class="nav__thumb color2" data-letter="T"></div>
+        <p class="nav__label">Tuesday</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="" class="nav__link">
+        <div class="nav__thumb color3" data-letter="W"></div>
+        <p class="nav__label">Wednesday</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="" class="nav__link">
+        <div class="nav__thumb color4" data-letter="Th"></div>
+        <p class="nav__label">Thursday</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="" class="nav__link">
+        <div class="nav__thumb color5" data-letter="F"></div>
+        <p class="nav__label">Friday</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="" class="nav__link">
+        <div class="nav__thumb color6" data-letter="Sa"></div>
+        <p class="nav__label">Saturday</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="" class="nav__link">
+        <div class="nav__thumb color7" data-letter="Su"></div>
+        <p class="nav__label">Sunday</p>
+      </a>
+    </li>
+  </ul>
+  <div class="burger burger--close">
+    <div class="burger__patty"></div>
+  </div>
+</nav>
+
+
+<div class="page" id="tabs">
+  <section class="section section--active color1" data-letter="M">
+    <article class="section__wrapper">
+      <div><h1 class="section__title" id="current-date"></h1>
+      <h1 id="current-time"></h1></div>
+
+        <script>
+          var d = new Date();
+          document.getElementById("current-date").innerHTML = d.toDateString();
+
+          function startTime() {
+              var today = new Date();
+              var h = today.getHours();
+              var m = today.getMinutes();
+              var s = today.getSeconds();
+              m = checkTime(m);
+              s = checkTime(s);
+              document.getElementById('current-time').innerHTML =
+              h + ":" + m + ":" + s;
+              var t = setTimeout(startTime, 500);
+          }
+
+          function checkTime(i) {
+              if (i < 10) {i = "0" + i}; 
+              return i;
+          }
+
+        </script>
+
+      <div id="Monday" class="tabcontent">
+      <br><br><br><br><br>
+      <input onclick= "change()" type="button" value="&plus; new" id="add-todo" />
+            <div id="to-do"><br><br>
+                <h3 class="incompleted_goals">Incomplete:</h3>
+                    <ul id="todo-list">
+                    </ul>
+            </div>
+
+            <div id="completed"><br><br>
+                <h3 class="completed_goals">Complete:</h3>
+                    <ul id="completed-list">
+                    </ul>
+                    <h4 id="Monday_comment"><br>(Good job, me)</h4>
+            </div>
+            <div id="new-todo">
+              <form>
+                <p>
+                  <label for="task" required>WHAT TO DO:</label>
+                  <input type="text" name="task" id="task" required>
+                </p>
+                <p>
+                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <input type="time" class= "time" name="time" id="time" required>
+                </p>
+              </form>
+          <script>
+
+          function change()
+          {
+            document.getElementById("add-todo").value="+ more";
+          }
+          </script>
+
+          <script>
+
+          $(document).ready(function(e) {
+
+            $('#add-todo').button({
+              icons: {
+                  primary: "ui-icon-circle-plus"
+              }
+            }).click(function() {
+              $('#new-todo').dialog('open');
+            }); // end click .delay(5000).fadeout
+            $('#new-todo').dialog({
+            modal: true,
+            autoOpen: false,
+              close: function() {
+                    $('#new-todo input').val(''); 
+                  },
+            buttons : {
+              "Add" : function() {
+                var taskName = $('#task').val();
+                var dueDate = $('#due-date').val();
+                var time = $('#time').val();
+                var beginLi = '<li><span style="cursor:pointer" class="done"><i class="fa fa-check"> </i></span><span  style="cursor:pointer" class="delete"><i class="fa fa-times"> </i></span>';
+                var taskLi = '<span class="task"> &nbsp;' +   taskName + ' &nbsp; </span>';
+                var timeLi = '<span class="time">&nbsp;'+ time + '&nbsp;</span>';
+                var endLi = '</li>';
+                $('#todo-list').prepend(beginLi + taskLi +  time, + endLi);
+                $('#todo-list').hide().slideDown(250).find('li:first')
+                      .animate({
+                    'background-color': '#b3ffec',
+                  },250)
+                    .animate({
+                    'background-color': '#ffa280'
+                  },250).animate; // end animate
+                $(this).dialog('close');
+              },
+              "Nevermind" : function() {
+                $(this).dialog('close');
+              }
+            }
+            }); 
+            $('#todo-list').on('click','.done',function(e) {
+              var $taskItem = $(this).parent("li");
+              alert('You completed the task!');
+              // fade in/fadeout 
+              var $copy = $taskItem.clone();
+              $('#completed-list').prepend($copy);
+              $copy.hide().slideDown(); 
+              $taskItem.remove();
+            }
+            ); // end on
+            
+            $('#todo-list, #completed-list').on('click','.delete',function(e) {
+              $(this).parent("li").effect('puff', function() {
+                $(this).remove();
+              }); // end slideup
+            }); // end on
+            
+            $('#todo-list').sortable();
+            
+          }); // end ready
+          </script>
+        </div>
+      </div>
+
+    </article>
+  </section>
+  <section class="section color2" data-letter="T">
+    <article class="section__wrapper">
+      <h1 class="section__title">Tuesday</h1>
+      <div id="Tuesday" class="tabcontent">
+        <button id="add-todo1">Add a goal</button>
+            <div id="to-do1">
+                <h3>Incomplete:</h3>
+                    <ul id="todo-list1">
+                    </ul>
+            </div>
+
+            <div id="completed1">
+                <h3 class="completed_goals1">Completed:</h3>
+                    <ul id="completed-list1">
+                    </ul>
+                    <h4 id="tuesday_comment"><br>(You can make it through the day)</h4>
+            </div>
+            <div id="new-todo1" title="Tuesday Goals">
+          <form>
+            <p>
+              <label for="task1">Task Name:</label>
+              <input type="text1" name="task1" id="task1">
+            </p>
+            <p>
+              <label id ="Calendar1" for="due-date1">Due Date:</label>
+              <input type="text1" name="due-date1" id="due-date1">
+            </p>
+          </form>
+
+          <script>
+          $(document).ready(function(e) {
+            $('#due-date1').datepicker();
+            $('#add-todo1').button({
+              icons: {
+                  primary: "ui-icon-circle-plus"
+              }
+            }).click(function() {
+              $('#new-todo1').dialog('open');
+            }); // end click
+            $('#new-todo1').dialog({
+            modal: true,
+            autoOpen: false,
+            close: function() {
+                  $('#new-todo1 input').val(''); /*clear fields*/
+                },
+            buttons : {
+              "Add task" : function() {
+                var taskName = $('#task1').val();
+                var dueDate = $('#due-date1').val();
+                var beginLi = '<li><span class="done1"> &#x2713 </span><span class="delete1"> &#10006; </span>';
+                var taskLi = '<span class="task1">' +   taskName + '</span>';
+                var dateLi = '<span class="due-date1">' +   dueDate + '</span>';
+                var endLi = '</li>';
+                $('#todo-list1').prepend(beginLi + taskLi + dateLi + endLi);
+                $('#todo-list1').hide().slideDown(250).find('li:first')
+                      .animate({
+                    'background-color': '#ff99c2'
+                  },250)
+                    .animate({
+                    'background-color': '#d9b3ff'
+                  },250).animate; // end animate
+                $(this).dialog('close');
+              },
+              "Cancel" : function() {
+                $(this).dialog('close');
+              }
+            }
+            }); 
+            $('#todo-list1').on('click','.done1',function(e) {
+              var $taskItem = $(this).parent("li");
+              var $copy = $taskItem.clone();
+              $('#completed-list1').prepend($copy);
+              $copy.hide().slideDown(); 
+              $taskItem.remove();
+            }
+            ); // end on
+            
+            $('#todo-list1, #completed-list1').on('click','.delete1',function(e) {
+              $(this).parent("li").slideUp(250, function() {
+                $(this).remove();
+              }); // end slideup
+            }); // end on
+            
+            $('#todo-list1').sortable();
+            
+          }); // end ready
+          </script>
+            </div>
+        </div>
+    </article>
+  </section>
+
+
+  <section class="section color3" data-letter="w">
+    <article class="section__wrapper">
+      <h1 class="section__title">Wednesday</h1>
+      <div id="Wednesday" class="tabcontent">
+        <button id="add-todo2">Add a goal</button>
+            <div id="to-do2">
+                <h3>All things I want to do... and the ones I need to do:</h3>
+                    <ul id="todo-list2">
+                    </ul>
+            </div>
+
+            <div id="completed2">
+                <h3 class="completed_goals2">What I've already completed!</h3>
+                    <ul id="completed-list2">
+                    </ul>
+                    <h4 id="wednesday_comment"><br>(Happy hump day)</h4>
+
+            </div>
+            <div id="new-todo2" title="Wednesday Goals">
+          <form>
+            <p>
+              <label for="task2">Task Name:</label>
+              <input type="text2" name="task2" id="task2">
+            </p>
+            <p>
+              <label id ="Calendar2" for="due-date2">Due Date:</label>
+              <input type="text2" name="due-date2" id="due-date2">
+            </p>
+          </form>
+
+          <script>
+          $(document).ready(function(e) {
+            $('#due-date2').datepicker();
+            $('#add-todo2').button({
+              icons: {
+                  primary: "ui-icon-circle-plus"
+              }
+            }).click(function() {
+              $('#new-todo2').dialog('open');
+            }); // end click
+            $('#new-todo2').dialog({
+            modal: true,
+            autoOpen: false,
+            close: function() {
+                  $('#new-todo2 input').val(''); /*clear fields*/
+                },
+            buttons : {
+              "Add task" : function() {
+                var taskName = $('#task2').val();
+                var dueDate = $('#due-date2').val();
+                var beginLi = '<li><span class="done2"> &#x2713; </span><span class="delete2"> &#10006; </span>';
+                var taskLi = '<span class="task2">' +   taskName + '</span>';
+                var dateLi = '<span class="due-date2">' +   dueDate + '</span>';
+                var endLi = '</li>';
+                $('#todo-list2').prepend(beginLi + taskLi + dateLi + endLi);
+                $('#todo-list2').hide().slideDown(250).find('li:first')
+                      .animate({
+                    'background-color': '#ff99c2'
+                  },250)
+                    .animate({
+                    'background-color': '#d9b3ff'
+                  },250).animate; // end animate
+                $(this).dialog('close');
+              },
+              "Cancel" : function() {
+                $(this).dialog('close');
+              }
+            }
+            }); 
+            $('#todo-list2').on('click','.done2',function(e) {
+              var $taskItem = $(this).parent("li");
+              var $copy = $taskItem.clone();
+              $('#completed-list2').prepend($copy);
+              $copy.hide().slideDown(); 
+              $taskItem.remove();
+            }
+            ); // end on
+            
+            $('#todo-list2, #completed-list2').on('click','.delete2',function(e) {
+              $(this).parent("li").slideUp(250, function() {
+                $(this).remove();
+              }); // end slideup
+            }); // end on
+            
+            $('#todo-list2').sortable();
+            
+          }); // end ready
+          </script>
+            </div>
+        </div>
+          
+    </article>
+  </section>
+  <section class="section color4" data-letter="Th">
+    <article class="section__wrapper">
+    <h1 class="section__title">Thursday</h1>
+      <div id="Thursday" class="tabcontent">
+        <button id="add-todo3">Add a goal</button>
+            <div id="to-do3">
+                <h3>All things I want to do... and the ones I need to do:</h3>
+                    <ul id="todo-list3">
+                    </ul>
+            </div>
+
+            <div id="completed3">
+                <h3 class="completed_goals3">What I've already completed!</h3>
+                    <ul id="completed-list3">
+                    </ul>
+                    <h4 id="sunday_comment"><br> (Almost there...)</h4>
+            </div>
+            <div id="new-todo3" title="Thursday Goals">
+          <form>
+            <p>
+              <label for="task3">Task Name:</label>
+              <input type="text3" name="task3" id="task3">
+            </p>
+            <p>
+              <label id ="Calendar3" for="due-date3">Due Date:</label>
+              <input type="text3" name="due-date3" id="due-date3">
+            </p>
+          </form>
+          <script>
+          $(document).ready(function(e) {
+            $('#due-date3').datepicker();
+            $('#add-todo3').button({
+              icons: {
+                  primary: "ui-icon-circle-plus"
+              }
+            }).click(function() {
+              $('#new-todo3').dialog('open');
+            }); // end click
+            $('#new-todo3').dialog({
+            modal: true,
+            autoOpen: false,
+            close: function() {
+                  $('#new-todo3 input').val(''); /*clear fields*/
+                },
+            buttons : {
+              "Add task" : function() {
+                var taskName = $('#task3').val();
+                var dueDate = $('#due-date3').val();
+                var beginLi = '<li><span class="done3"> &#x2713; </span><span class="delete3"> &#10006; </span>';
+                var taskLi = '<span class="task3">' +   taskName + '</span>';
+                var dateLi = '<span class="due-date3">' +   dueDate + '</span>';
+                var endLi = '</li>';
+                $('#todo-list3').prepend(beginLi + taskLi + dateLi + endLi);
+                $('#todo-list3').hide().slideDown(250).find('li:first')
+                      .animate({
+                    'background-color': '#ff99c2'
+                  },250)
+                    .animate({
+                    'background-color': '#d9b3ff'
+                  },250).animate; // end animate
+                $(this).dialog('close');
+              },
+              "Cancel" : function() {
+                $(this).dialog('close');
+              }
+            }
+            }); 
+            $('#todo-list3').on('click','.done3',function(e) {
+              var $taskItem = $(this).parent("li");
+              var $copy = $taskItem.clone();
+              $('#completed-list3').prepend($copy);
+              $copy.hide().slideDown(); 
+              $taskItem.remove();
+            }
+            ); // end on
+            
+            $('#todo-list3, #completed-list3').on('click','.delete3',function(e) {
+              $(this).parent("li").slideUp(250, function() {
+                $(this).remove();
+              }); // end slideup
+            }); // end on
+            
+            $('#todo-list3').sortable();
+            
+          }); // end ready
+          </script>
+            </div>
+        </div>
+    </article>
+  </section>
+  <section class="section color5" data-letter="F">
+    <article class="section__wrapper">
+      <h1 class="section__title">Friday</h1>
+      <div id="Friday" class="tabcontent">
+        <button id="add-todo4">Add a goal</button>
+            <div id="to-do4">
+                <h3>All things I want to do... and the ones I need to do:</h3>
+                    <ul id="todo-list4">
+                    </ul>
+            </div>
+
+            <div id="completed4">
+                <h3 class="completed_goals4">What I've already completed!</h3>
+                    <ul id="completed-list4">
+                    </ul>
+                <h4 id="friday_comment"><br>(Happy Friday!)</h4>
+            </div>
+            <div id="new-todo4" title="Friday Goals">
+          <form>
+            <p>
+              <label for="task4">Task Name:</label>
+              <input type="text4" name="task4" id="task4">
+            </p>
+            <p>
+              <label id ="Calendar4" for="due-date4">Due Date:</label>
+              <input type="text4" name="due-date4" id="due-date4">
+            </p>
+          </form>
+
+          <script>
+          $(document).ready(function(e) {
+            $('#due-date4').datepicker();
+            $('#add-todo4').button({
+              icons: {
+                  primary: "ui-icon-circle-plus"
+              }
+            }).click(function() {
+              $('#new-todo4').dialog('open');
+            }); // end click
+            $('#new-todo4').dialog({
+            modal: true,
+            autoOpen: false,
+            close: function() {
+                  $('#new-todo4 input').val(''); /*clear fields*/
+                },
+            buttons : {
+              "Add task" : function() {
+                var taskName = $('#task4').val();
+                var dueDate = $('#due-date4').val();
+                var beginLi = '<li><span class="done4"> &#x2713; </span><span class="delete4"> &#10006; </span>';
+                var taskLi = '<span class="task4">' +   taskName + '</span>';
+                var dateLi = '<span class="due-date4">' +   dueDate + '</span>';
+                var endLi = '</li>';
+                $('#todo-list4').prepend(beginLi + taskLi + dateLi + endLi);
+                $('#todo-list4').hide().slideDown(250).find('li:first')
+                      .animate({
+                    'background-color': '#ff99c2'
+                  },250)
+                    .animate({
+                    'background-color': '#d9b3ff'
+                  },250).animate; // end animate
+                $(this).dialog('close');
+              },
+              "Cancel" : function() {
+                $(this).dialog('close');
+              }
+            }
+            }); 
+            $('#todo-list4').on('click','.done4',function(e) {
+              var $taskItem = $(this).parent("li");
+              var $copy = $taskItem.clone();
+              $('#completed-list4').prepend($copy);
+              $copy.hide().slideDown(); 
+              $taskItem.remove();
+            }
+            ); // end on
+            
+            $('#todo-list4, #completed-list4').on('click','.delete4',function(e) {
+              $(this).parent("li").slideUp(250, function() {
+                $(this).remove();
+              }); // end slideup
+            }); // end on
+            
+            $('#todo-list4').sortable();
+            
+          }); // end ready
+          </script>
+            </div>
+        </div>
+    </article>
+  </section>
+  <section class="section color6" data-letter="Sa">
+    <article class="section__wrapper">
+    <h1 class="section__title">Saturday</h1>
+      <div id="Saturday" class="tabcontent">
+        <button id="add-todo5">Add a goal</button>
+            <div id="to-do5">
+                <h3>All things I want to do... and the ones I need to do:</h3>
+                    <ul id="todo-list5">
+                    </ul>
+            </div>
+
+            <div id="completed5">
+                <h3 class="completed_goals5">What I've already completed!</h3>
+                    <ul id="completed-list5">
+                    </ul>
+                <h4 id="Saturday_comment"><br>(Hopefully you are planning something fun?)</h4>
+            </div>
+            <div id="new-todo5" title="Friday goals">
+          <form>
+            <p>
+              <label for="task5">Task Name:</label>
+              <input type="text5" name="task5" id="task5">
+            </p>
+            <p>
+              <label id ="Calendar5" for="due-date5">Due Date:</label>
+              <input type="text5" name="due-date5" id="due-date5">
+            </p>
+          </form>
+
+          <script>
+          $(document).ready(function(e) {
+            $('#due-date5').datepicker();
+            $('#add-todo5').button({
+              icons: {
+                  primary: "ui-icon-circle-plus"
+              }
+            }).click(function() {
+              $('#new-todo5').dialog('open');
+            }); // end click
+            $('#new-todo5').dialog({
+            modal: true,
+            autoOpen: false,
+            close: function() {
+                  $('#new-todo5 input').val(''); /*clear fields*/
+                },
+            buttons : {
+              "Add task" : function() {
+                var taskName = $('#task5').val();
+                var dueDate = $('#due-date5').val();
+                var beginLi = '<li><span class="done5"> &#x2713; </span><span class="delete5"> &#10006; </span>';
+                var taskLi = '<span class="task5">' +   taskName + '</span>';
+                var dateLi = '<span class="due-date5">' +   dueDate + '</span>';
+                var endLi = '</li>';
+                $('#todo-list5').prepend(beginLi + taskLi + dateLi + endLi);
+                $('#todo-list5').hide().slideDown(250).find('li:first')
+                      .animate({
+                    'background-color': '#ff99c2'
+                  },250)
+                    .animate({
+                    'background-color': '#d9b3ff'
+                  },250).animate; // end animate
+                $(this).dialog('close');
+              },
+              "Cancel" : function() {
+                $(this).dialog('close');
+              }
+            }
+            }); 
+            $('#todo-list5').on('click','.done5',function(e) {
+              var $taskItem = $(this).parent("li");
+              var $copy = $taskItem.clone();
+              $('#completed-list5').prepend($copy);
+              $copy.hide().slideDown(); 
+              $taskItem.remove();
+            }
+            ); // end on
+            
+            $('#todo-list5, #completed-list5').on('click','.delete5',function(e) {
+              $(this).parent("li").slideUp(250, function() {
+                $(this).remove();
+              }); // end slideup
+            }); // end on
+            
+            $('#todo-list5').sortable();
+            
+          }); // end ready
+          </script>
+            </div>
+        </div>
+    </article>
+  </section>
+  <section class="section color7" data-letter="Su">
+    <article class="section__wrapper">
+    <h1 class="section__title">Sunday</h1>
+      <div id="Sunday" class="tabcontent">
+        <button id="add-todo6">Add a goal</button>
+            <div id="to-do6">
+                <h3>All things I want to do... and the ones I need to do:</h3>
+                    <ul id="todo-list6">
+                    </ul>
+            </div>
+
+            <div id="completed6">
+                <h3 class="completed_goals6">What I've already completed:</h3>
+                    <ul id="completed-list6">
+                    </ul>
+                <h4 id="sunday_comment"><br>(Any goal to relax for a bit?)</h4>
+            </div>
+            <div id="new-todo6" title="Saturday Goals">
+          <form>
+            <p>
+              <label for="task6">Task Name:</label>
+              <input type="text6" name="task6" id="task6">
+            </p>
+            <p>
+              <label id ="Calendar6" for="due-date6">Due Date:</label>
+              <input type="text6" name="due-date6" id="due-date6">
+            </p>
+          </form>
+
+          <script>
+          $(document).ready(function(e) {
+            $('#due-date6').datepicker();
+            $('#add-todo6').button({
+              icons: {
+                  primary: "ui-icon-circle-plus"
+              }
+            }).click(function() {
+              $('#new-todo6').dialog('open');
+            }); // end click
+            $('#new-todo6').dialog({
+            modal: true,
+            autoOpen: false,
+            close: function() {
+                  $('#new-todo6 input').val(''); /*clear fields*/
+                },
+            buttons : {
+              "Add task" : function() {
+                var taskName = $('#task6').val();
+                var dueDate = $('#due-date6').val();
+                var beginLi = '<li><span class="done6"> &#x2713 </span><span class="delete6"> &#10006; </span>';
+                var taskLi = '<span class="task6">' +   taskName + '</span>';
+                var dateLi = '<span class="due-date6">' +   dueDate + '</span>';
+                var endLi = '</li>';
+                $('#todo-list6').prepend(beginLi + taskLi + dateLi + endLi);
+                $('#todo-list6').hide().slideDown(250).find('li:first')
+                      .animate({
+                    'background-color': '#ff99c2'
+                  },250)
+                    .animate({
+                    'background-color': '#d9b3ff'
+                  },250).animate; // end animate
+                $(this).dialog('close');
+              },
+              "Cancel" : function() {
+                $(this).dialog('close');
+              }
+            }
+            }); 
+            $('#todo-list6').on('click','.done6',function(e) {
+              var $taskItem = $(this).parent("li");
+              var $copy = $taskItem.clone();
+              $('#completed-list6').prepend($copy);
+              $copy.hide().slideDown(); 
+              $taskItem.remove();
+            }
+            ); // end on
+            
+            $('#todo-list6, #completed-list6').on('click','.delete6',function(e) {
+              $(this).parent("li").slideUp(250, function() {
+                $(this).remove();
+              }); // end slideup
+            }); // end on
+            
+            $('#todo-list6').sortable();
+            
+          }); // end ready
+          </script>
+            </div>
+        </div>
+    </article>
+  </section>
+</div>
+</body>
+<script>
+var Nav = (function() {
+  var
+    nav = $('.nav'),
+    burger = $('.burger'),
+    page = $('.page'),
+    section = $('.section'),
+    link = nav.find('.nav__link'),
+    navH = nav.innerHeight(),
+    isOpen = true,
+    hasT = false;
+  var toggleNav = function() {
+    nav.toggleClass('nav--active');
+    burger.toggleClass('burger--close');
+    shiftPage();
+  };
+  var shiftPage = function() {
+    if (!isOpen) {
+      page.css({
+        'transform': 'translateY(' + navH + 'px)',
+        '-webkit-transform': 'translateY(' + navH + 'px)'
+      });
+      isOpen = true;
+    } else {
+      page.css({
+        'transform': 'none',
+        '-webkit-transform': 'none'
+      });
+      isOpen = false;
+    }
+  };
+  var switchPage = function(e) {
+    var self = $(this);
+    var i = self.parents('.nav__item').index();
+    var s = section.eq(i);
+    var a = $('section.section--active');
+    var t = $(e.target);
+    if (!hasT) {
+      if (i == a.index()) {
+        return false;
+      }
+      a
+        .addClass('section--hidden')
+        .removeClass('section--active');
+      s.addClass('section--active');
+      hasT = true;
+      a.on('transitionend webkitTransitionend', function() {
+        $(this).removeClass('section--hidden');
+        hasT = false;
+        a.off('transitionend webkitTransitionend');
+      });
+    }
+    return false;
+  };
+  var keyNav = function(e) {
+    var a = $('section.section--active');
+    var aNext = a.next();
+    var aPrev = a.prev();
+    var i = a.index();
+    if (!hasT) {
+      if (e.keyCode === 37) {
+        if (aPrev.length === 0) {
+          aPrev = section.last();
+        }
+        hasT = true;
+        aPrev.addClass('section--active');
+        a
+          .addClass('section--hidden')
+          .removeClass('section--active');
+        a.on('transitionend webkitTransitionend', function() {
+          a.removeClass('section--hidden');
+          hasT = false;
+          a.off('transitionend webkitTransitionend');
+        });
+      } else if (e.keyCode === 39) {
+        if (aNext.length === 0) {
+          aNext = section.eq(0)
+        }
+        aNext.addClass('section--active');
+        a
+          .addClass('section--hidden')
+          .removeClass('section--active');
+        hasT = true;
+        aNext.on('transitionend webkitTransitionend', function() {
+          a.removeClass('section--hidden');
+          hasT = false;
+          aNext.off('transitionend webkitTransitionend');
+        });
+      } else {
+        return
+      }
+    }
+  };
+  var bindActions = function() {
+    burger.on('click', toggleNav);
+    link.on('click', switchPage);
+    $(document).on('ready', function() {
+      page.css({
+        'transform': 'translateY(' + navH + 'px)',
+        '-webkit-transform': 'translateY(' + navH + 'px)'
+      });
+    });
+    $('body').on('keydown', keyNav);
+  };
+  var init = function() {
+    bindActions();
+  };
+  return {
+    init: init
+  };
+}());
+Nav.init();
+</script>
