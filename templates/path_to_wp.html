@@ -1,11 +1,27 @@
 <html>
 <head>
 	<title>On our way to the weekly planner</title>
+	
+<link rel="stylesheet" href="static/reset.css">
+<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel="stylesheet" href="static/transition_style.css">
+
 </head>
 <body>
-	<h1 action='/choose_achievement' method="POST", "GET">This is the story about a little bear called {{ username }}. This little bear always forgets where everything is. Help {{ username }} set some habits and restore order for once!</h1>
+<div class="parallax brick" data-id="brick-1" data-start="200" data-stop="1150"></div>
+
+	<br><h1 action='/choose_achievement' method="POST", "GET">This is the story about a little bear called {{ username }}. This little bear always forgets where everything is. Help {{ username }} set some habits and restore order for once!</h1><br>
 
 <!-- This will take you to the page where you will create your own achievement -->
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Select language</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#">Spanish</a>
+    <a href="#">English</a>
+  </div>
+</div>
 
 	<form action='/results'>
 
@@ -21,6 +37,29 @@
 			button_left.innerText = "Ok, let's do it!"
 		}
 	button_left.addEventListener("click", changeMessage);
+</script>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 </script>
 
 

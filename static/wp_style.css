@@ -12,7 +12,7 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-/*    background: transparent;*/
+    background: transparent;
     background: #ff99c2;
     opacity: .50
     filter: Alpha(Opacity=50);
@@ -22,6 +22,22 @@
 .ui-dialog .ui-dialog-titlebar {
     display:none;
 }
+
+.task {
+  text-align: center;
+  font-weight: bold;
+  color: #606265;
+  opacity: .7;
+}
+
+#time, #time1, #time2, #time3, #time4, #time5, #time6 {
+  text-align: right;
+  font-weight: bold;
+  color: #606265;
+  opacity: .7;
+}
+
+
 
 h1 {
   text-align: justify;
@@ -36,7 +52,7 @@ h1 {
 
 }
 
-#current-time {
+#current-time, #current-time1, #current-time2, #current-time3, #current-time4, #current-time5, #current-time6 {
   text-align: justify;
   position: absolute;
   letter-spacing: 2px;
@@ -48,9 +64,12 @@ h1 {
   text-transform: uppercase;
   opacity: 0.15;
 }
+
+
+
 /* list styles */
 
-#add-todo {
+#add-todo, #add-todo1, #add-todo2, #add-todo3, #add-todo4, #add-todo5, #add-todo6 {
   will-change: transform;
   transition: transform 0.3s;
   transform: scale(1.5);
@@ -66,6 +85,7 @@ h1 {
   color: #ffffff;
   background-color: #ff99c2;
   border-radius: 4px;
+  border-color: #ffffff;
   box-shadow: 0 1px #b3c6ff;
   position: relative;
   letter-spacing: 3px;
@@ -73,11 +93,11 @@ h1 {
   left: 30%;
 }
 
-#add-todo:hover {
+#add-todo:hover , #add-todo1:hover , #add-todo2:hover , #add-todo3:hover , #add-todo4:hover, #add-todo5:hover, #add-todo6:hover {
   background-color: #b3ffec;
 }
 
-#add-todo:active {
+#add-todo:active, #add-todo1:active, #add-todo2:active, #add-todo3:active, #add-todo4:active, #add-todo5:active, #add-todo6:active {
   background-color: #ffffff;
 }
 
@@ -93,7 +113,7 @@ h1 {
   color: #ffffff;
 }
 
-#Monday_comment {
+#Monday_comment, #Tuesday_comment, #Wednesday_comment, #Thursday_comment, #Friday_comment, #Saturday_comment, #Sunday_comment {
   text-transform: lowercase;
   opacity: 0.40;
   font-size: 15px
@@ -136,16 +156,32 @@ h1 {
 }
 
 /*Styling for the checkmark on te list*/
-#todo-list .done:hover {
-  background-color: #b3ffec;
+
+#todo-list, #todo-list1, #todo-list2, #todo-list3, #todo-list4, #todo-list5, #todo-list6 .done:hover {
+  background-color: #ffffff;
   color: white; 
+  font-weight: bold;
 }
 
-#completed-list .done {
+#completed-list, #completed-list1, #completed-list2, #completed-list3, #completed-list4, #completed-list5, #completed-list6 .done:hover {
+  background-color: #ffffff;
+  color: white; 
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+
+/*#completed-list3 .done {
   color: #ffa280;
   border: none;
   cursor: default; 
 }
+
+#completed-list .done {
+  color: none;
+  border: none;
+  cursor: default; 
+}*/
 
 * {
   box-sizing: border-box;
@@ -278,7 +314,8 @@ ul {
   background: #ffffff;
   -webkit-transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
   transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
-}
+ }
+
 .burger__patty:before,
 .burger__patty:after {
   will-change: transform;
@@ -377,7 +414,7 @@ ul {
   margin-bottom: 0;
 }
 .color1 {
-  background: #ffa280;
+  background: #d9b3ff;
 }
 .color2 {
   background: #ffd480;
@@ -389,7 +426,7 @@ ul {
   background: #ff99c2;
 }
 .color5 {
-  background: #d9b3ff;
+  background: #ffa280;
 }
 .color6 {
   background: #bdc3c7;
@@ -398,14 +435,6 @@ ul {
   background: #b3ffec;
 }
 
-#new-todo {
-  display: none;
-}
-
-#button { 
-  display: none;
-  color: #ffa280; 
-}
 
 .logo {
   position: fixed;
@@ -429,3 +458,32 @@ ul {
   -webkit-transform: rotate(180deg) scale(1.1);
           transform: rotate(180deg) scale(1.1);
 }
+
+#doneDialog, #doneDialog1, #doneDialog2, #doneDialog3, #doneDialog4, #doneDialog5, #doneDialog6 {
+  border-style: solid;
+  border-width: 3px; 
+  position: fixed;
+  bottom: 200px; 
+  right: 200px;
+  width: 100px;
+  height: 100px;
+  background: #FF1FC7;
+  color: #ffffff;
+  outline: #ffffff;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+  font-family: 'Muli', sans-serif;
+
+}
+
+ .change_language {
+  position: relative;
+  width: 30%;
+  height: 2px;
+  background: #ffffff;
+  -webkit-transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+

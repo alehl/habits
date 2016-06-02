@@ -8,14 +8,14 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="static/wp_style.css">
+<link rel="stylesheet" href="/static/wp_style.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
 
 </head>
 
 
-<body onload="startTime()">
+<body onload="startTime()" onload="startTimeOne()" onload="startTimeTwo()" onload="startTimeThree" onload="startTimeFour()" onload="startTimeFive()" onload="startTimeSix()">
 
 <!-- CSS Nav Bar Begins -->
 
@@ -27,56 +27,56 @@
 
     <li class="nav__item">
       <a href="" class="nav__link">
-        <div class="nav__thumb color1" data-letter="M"></div>
-        <p class="nav__label">Monday</p>
+        <div class="nav__thumb color1" data-letter="{{ _('M')}}"></div>
+        <p class="nav__label">{{ _('Monday')}}</p>
       </a>
     </li>
 
 
     <li class="nav__item">
       <a href="" class="nav__link">
-        <div class="nav__thumb color2" data-letter="T"></div>
-        <p class="nav__label">Tuesday</p>
+        <div class="nav__thumb color2" data-letter="{{ _('T')}}"></div>
+        <p class="nav__label">{{ _('Tuesday')}}</p>
       </a>
     </li>
 
 
     <li class="nav__item">
       <a href="" class="nav__link">
-        <div class="nav__thumb color3" data-letter="W"></div>
-        <p class="nav__label">Wednesday</p>
+        <div class="nav__thumb color3" data-letter="{{ _('W')}}"></div>
+        <p class="nav__label">{{ _('Wednesday')}}</p>
       </a>
     </li>
 
 
     <li class="nav__item">
       <a href="" class="nav__link">
-        <div class="nav__thumb color4" data-letter="Th"></div>
-        <p class="nav__label">Thursday</p>
+        <div class="nav__thumb color4" data-letter="{{ _('Th')}}"></div>
+        <p class="nav__label">{{ _('Thursday')}}</p>
       </a>
     </li>
 
 
     <li class="nav__item">
       <a href="" class="nav__link">
-        <div class="nav__thumb color5" data-letter="F"></div>
-        <p class="nav__label">Friday</p>
+        <div class="nav__thumb color5" data-letter="{{ _('F')}}"></div>
+        <p class="nav__label">{{ _('Friday')}}</p>
       </a>
     </li>
 
 
     <li class="nav__item">
       <a href="" class="nav__link">
-        <div class="nav__thumb color6" data-letter="Sa"></div>
-        <p class="nav__label">Saturday</p>
+        <div class="nav__thumb color6" data-letter="{{ _('Sa')}}"></div>
+        <p class="nav__label">{{ _('Saturday')}}</p>
       </a>
     </li>
 
 
     <li class="nav__item">
       <a href="" class="nav__link">
-        <div class="nav__thumb color7" data-letter="Su"></div>
-        <p class="nav__label">Sunday</p>
+        <div class="nav__thumb color7" data-letter="{{ _('Su')}}"></div>
+        <p class="nav__label">{{ _('Sunday')}}</p>
       </a>
     </li>
 
@@ -91,17 +91,18 @@
 </nav>
 
 <!-- Nav Bar Ends -->
-
+<h1 id="current-time"></h1></div>
+<h1 id="current-time1"></h1></div>
 
 <div class="page" id="tabs">
 
-  <section class="section section--active color1" data-letter="M">
+  <section class="section section--active color1" data-letter="{{ _('M')}}">
 
     <article class="section__wrapper">
 
         <div><h1 class="section__title" id="current-date" name="current-date"></h1>
 
-        <h1 id="current-time"></h1></div>
+        <!-- <h1 id="current-time"></h1></div> -->
 
         <script>
 
@@ -135,30 +136,32 @@
       <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo" />
             <div class="to-do" id="to-do"><br><br>
 
-                <h3 class="incompleted_goals">Incomplete:</h3>
+                <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list">
                     </ul>
 
             </div>
 
             <div class="completed" id="completed"><br><br>
-                <h3 class="completed_goals">Complete:</h3>
+                <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list">
                     </ul>
 
-                <h4 class="comment" id="Monday_comment"><br>(Fresh start!)</h4>
+                <h4 class="comment" id="Monday_comment"><br>{{ _('(Fresh start!)')}}</h4>
+                <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #productive')}}</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
 
             <div class="new-todo" id="new-todo">
               <form>
 
                 <p>
-                  <label for="task" required>WHAT TO DO:</label>
+                  <label for="task" required>{{ _('WHAT TO DO:')}}</label>
                   <input type="text" class="task" name="task" id="task" required>
                 </p>
 
                 <p>
-                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <label id ="Clock" for="time" required>{{ _('WHEN:')}}</label>
                   <input type="time" class="time" name="time" id="time" required>
                 </p>
 
@@ -192,7 +195,7 @@
                     $('#new-todo input').val(''); 
                   },
             buttons : {
-              "Add" : function() {
+              "{{ _('Add')}}" : function() {
                 var taskName = $('#task').val();
                 var dueDate = $('#due-date').val();
                 var time = $('#time').val();
@@ -207,28 +210,16 @@
                     'background-color': '#b3ffec',
                   },250)
                     .animate({
-                    'background-color': '#ffa280'
+                    'background-color': '#d9b3ff'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
 
-              "Nevermind" : function() {
+              "{{ _('Nevermind')}}" : function() {
                 $(this).dialog('close');
               }
             }
             }); 
-
-            // $(".done").dialog ({
-            //           autoOpen:false,
-            //           show: {
-            //             effect: "blind",
-            //             .duration: 9000
-            //           },
-            //           hide: {
-            //             effect: "explode",
-            //             duration: 9000
-            //           }
-            //         });
 
             $('#todo-list').on('click','.done',function(e) {
               var $taskItem = $(this).parent("li");
@@ -237,7 +228,7 @@
               $('#completed-list').prepend($copy);
               $copy.hide().slideDown(); 
               $taskItem.remove();
-              $(".done").append("<div id='doneDialog'><br>You earn a pat on the back!</div>");
+              $(".done").append("<div id='doneDialog'><br>{{ _('You earn a pat on the back!')}}</div>");
             }
             ); // end on
             
@@ -257,16 +248,16 @@
   </section>
 
 
-  <section class="section color2" data-letter="T">
+  <section class="section color2" data-letter="{{ _('T')}}">
     <article class="section__wrapper">
         <div><h1 class="section__title" id="current-date1" name="current-date1"></h1>
-        <h1 id="current-time1"></h1></div>
-
+    <!--     <h1 id="current-time1"></h1></div>
+ -->
         <script>
           var d = new Date();
           document.getElementById("current-date1").innerHTML = d.toDateString();
 
-          function startTime() {
+          function startTimeOne() {
               var today = new Date();
               var h = today.getHours();
               var m = today.getMinutes();
@@ -275,7 +266,7 @@
               s = checkTime(s);
               document.getElementById('current-time1').innerHTML =
               h + ":" + m + ":" + s;
-              var t = setTimeout(startTime, 500);
+              var t = setTimeout(startTimeOne, 500);
           }
 
           function checkTime(i) {
@@ -285,30 +276,33 @@
 
         </script>
 
-      <div class="Tuesday" id="Tuesday" class="tabcontent" name="Tuesday">
+      <div class="Tuesday" id="Tuesday" class="tabcontent" name="{{ _('Tuesday')}}">
       <br><br><br><br><br>
 
       <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo1" />
             <div class="to-do" id="to-do1"><br><br>
-                <h3 class="incompleted_goals">Incomplete:</h3>
+                <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list1">
                     </ul>
             </div>
 
             <div class="completed" id="completed1"><br><br>
-                <h3 class="completed_goals">Complete:</h3>
+                <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list1">
                     </ul>
-                    <h4 class="comment" id="Tuesday_comment"><br>(Yeah, it's tuesday - but you can do it!)</h4>
+                    <p id="Tuesday_comment"><br>(Yeah, it's tuesday... but you can do it)</p>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #tuesdaygoals')}}</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo1">
               <form>
                 <p>
-                  <label for="task" required>WHAT TO DO:</label>
+                  <label for="task" required>{{ _('WHAT TO DO:')}}</label>
                   <input type="text" class="task" name="task" id="task1" required>
                 </p>
                 <p>
-                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <label id ="Clock" for="time" required>{{ _('WHEN:')}}</label>
                   <input type="time" class="time" name="time" id="time1" required>
                 </p>
               </form>
@@ -338,7 +332,7 @@
                     $('#new-todo1 input').val(''); 
                   },
             buttons : {
-              "Add" : function() {
+              "{{ _('Add')}}" : function() {
                 var taskName = $('#task1').val();
                 var dueDate = $('#due-date1').val();
                 var time = $('#time1').val();
@@ -352,27 +346,15 @@
                     'background-color': '#b3ffec',
                   },250)
                     .animate({
-                    'background-color': '#ffa280'
+                    'background-color': '#ffd480'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
-              "Nevermind" : function() {
+              "{{ _('Nevermind')}}" : function() {
                 $(this).dialog('close');
               }
             }
             }); 
-
-            // $(".done").dialog ({
-            //           autoOpen:false,
-            //           show: {
-            //             effect: "blind",
-            //             .duration: 9000
-            //           },
-            //           hide: {
-            //             effect: "explode",
-            //             duration: 9000
-            //           }
-            //         });
 
             $('#todo-list1').on('click','.done',function(e) {
               var $taskItem = $(this).parent("li");
@@ -381,7 +363,7 @@
               $('#completed-list1').prepend($copy);
               $copy.hide().slideDown(); 
               $taskItem.remove();
-              $(".done").append("<div id='doneDialog1'><br>You earn a pat on the back!</div>");
+              $(".done").append("<div id='doneDialog1'><br>{{ _('You earn a pat on the back!')}}</div>");
             }
             ); // end on
             
@@ -402,7 +384,7 @@
   </section>
 
 
-  <section class="section color3" data-letter="w">
+  <section class="section color3" data-letter="{{ _('W')}}">
     <article class="section__wrapper">
         <div><h1 class="section__title" id="current-date2" name="current-date2"></h1>
         <h1 id="current-time2"></h1></div>
@@ -411,7 +393,7 @@
           var d = new Date();
           document.getElementById("current-date2").innerHTML = d.toDateString();
 
-          function startTime() {
+          function startTimeTwo() {
               var today = new Date();
               var h = today.getHours();
               var m = today.getMinutes();
@@ -420,7 +402,7 @@
               s = checkTime(s);
               document.getElementById('current-time2').innerHTML =
               h + ":" + m + ":" + s;
-              var t = setTimeout(startTime, 500);
+              var t = setTimeout(startTimeTwo, 500);
           }
 
           function checkTime(i) {
@@ -434,25 +416,27 @@
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo2" />
             <div class="to-do" id="to-do2"><br><br>
-                <h3 class="incompleted_goals">Incomplete:</h3>
+                <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list2">
                     </ul>
             </div>
 
             <div class="completed" id="completed2"><br><br>
-                <h3 class="completed_goals">Complete:</h3>
+                <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list2">
                     </ul>
                     <h4 class="comment" id="Wednesday_comment"><br>(Halfway there...)</h4>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #goals')}}</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo2">
               <form>
                 <p>
-                  <label for="task" required>WHAT TO DO:</label>
+                  <label for="task" required>{{ _('WHAT TO DO:')}}</label>
                   <input type="text" class="task" name="task" id="task2" required>
                 </p>
                 <p>
-                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <label id ="Clock" for="time" required>{{ _('WHEN:')}}</label>
                   <input type="time" class="time" name="time" id="time2" required>
                 </p>
               </form>
@@ -482,7 +466,7 @@
                     $('#new-todo2 input').val(''); 
                   },
             buttons : {
-              "Add" : function() {
+              "{{ _('Add')}}" : function() {
                 var taskName = $('#task2').val();
                 var dueDate = $('#due-date2').val();
                 var time = $('#time2').val();
@@ -496,27 +480,16 @@
                     'background-color': '#b3ffec',
                   },250)
                     .animate({
-                    'background-color': '#ffa280'
+                    'background-color': '#b3c6ff'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
-              "Nevermind" : function() {
+              "{{ _('Nevermind')}}" : function() {
                 $(this).dialog('close');
               }
             }
             }); 
 
-            // $(".done").dialog ({
-            //           autoOpen:false,
-            //           show: {
-            //             effect: "blind",
-            //             .duration: 9000
-            //           },
-            //           hide: {
-            //             effect: "explode",
-            //             duration: 9000
-            //           }
-            //         });
 
             $('#todo-list2').on('click','.done',function(e) {
               var $taskItem = $(this).parent("li");
@@ -525,7 +498,7 @@
               $('#completed-list2').prepend($copy);
               $copy.hide().slideDown(); 
               $taskItem.remove();
-              $(".done").append("<div id='doneDialog2'><br>&nbsp; You get a <br>gold star!</div>");
+              $(".done").append("<div id='doneDialog2'><br>{{ _('&nbsp; You get a <br>gold star!')}}</div>");
             }
             ); // end on
             
@@ -545,7 +518,7 @@
     </article>
   </section>
 
-  <section class="section color4" data-letter="Th">
+  <section class="section color4" data-letter="{{ _('Th')}}">
     <article class="section__wrapper">
 
         <div><h1 class="section__title" id="current-date3" name="current-date3"></h1>
@@ -555,7 +528,7 @@
           var d = new Date();
           document.getElementById("current-date3").innerHTML = d.toDateString();
 
-          function startTime() {
+          function startTimeThree() {
               var today = new Date();
               var h = today.getHours();
               var m = today.getMinutes();
@@ -564,7 +537,7 @@
               s = checkTime(s);
               document.getElementById('current-time3').innerHTML =
               h + ":" + m + ":" + s;
-              var t = setTimeout(startTime, 500);
+              var t = setTimeout(startTimeThree, 500);
           }
 
           function checkTime(i) {
@@ -579,25 +552,27 @@
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo3" />
             <div class="to-do" id="to-do3"><br><br>
-                <h3 class="incompleted_goals">Incomplete:</h3>
+                <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list3">
                     </ul>
             </div>
 
             <div class="completed" id="completed3"><br><br>
-                <h3 class="completed_goals">Complete:</h3>
+                <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list3">
                     </ul>
                     <h4 class="comment" id="Wednesday_comment"><br>(Almost there...)</h4>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #fruitful')}}</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo3">
               <form>
                 <p>
-                  <label for="task" required>WHAT TO DO:</label>
+                  <label for="task" required>{{ _('WHAT TO DO:')}}</label>
                   <input type="text" class="task" name="task" id="task3" required>
                 </p>
                 <p>
-                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <label id ="Clock" for="time" required>{{ _('WHEN:')}}</label>
                   <input type="time" class="time" name="time" id="time3" required>
                 </p>
               </form>
@@ -627,7 +602,7 @@
                     $('#new-todo3 input').val(''); 
                   },
             buttons : {
-              "Add" : function() {
+              "{{ _('Add')}}" : function() {
                 var taskName = $('#task3').val();
                 var dueDate = $('#due-date3').val();
                 var time = $('#time3').val();
@@ -641,27 +616,15 @@
                     'background-color': '#b3ffec',
                   },250)
                     .animate({
-                    'background-color': '#ffa280'
+                    'background-color': '#ff99c2'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
-              "Nevermind" : function() {
+              "{{ _('Nevermind')}}" : function() {
                 $(this).dialog('close');
               }
             }
             }); 
-
-            // $(".done").dialog ({
-            //           autoOpen:false,
-            //           show: {
-            //             effect: "blind",
-            //             .duration: 9000
-            //           },
-            //           hide: {
-            //             effect: "explode",
-            //             duration: 9000
-            //           }
-            //         });
 
             $('#todo-list3').on('click','.done',function(e) {
               var $taskItem = $(this).parent("li");
@@ -670,7 +633,7 @@
               $('#completed-list3').prepend($copy);
               $copy.hide().slideDown(); 
               $taskItem.remove();
-              $(".done").append("<div id='doneDialog3'><br>Great work!</div>");
+              $(".done").append("<div id='doneDialog3'><br>{{ _('Great work!')}}</div>");
             }
             ); // end on
             
@@ -690,7 +653,7 @@
     </article>
   </section>
 
-  <section class="section color5" data-letter="F">
+  <section class="section color5" data-letter="{{ _('F')}}">
     <article class="section__wrapper">
         <div><h1 class="section__title" id="current-date4" name="current-date4"></h1>
         <h1 id="current-time4"></h1></div>
@@ -699,7 +662,7 @@
           var d = new Date();
           document.getElementById("current-date4").innerHTML = d.toDateString();
 
-          function startTime() {
+          function startTimeFour() {
               var today = new Date();
               var h = today.getHours();
               var m = today.getMinutes();
@@ -708,7 +671,7 @@
               s = checkTime(s);
               document.getElementById('current-time4').innerHTML =
               h + ":" + m + ":" + s;
-              var t = setTimeout(startTime, 500);
+              var t = setTimeout(startTimeFour, 500);
           }
 
           function checkTime(i) {
@@ -722,13 +685,13 @@
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo4" />
             <div class="to-do" id="to-do4"><br><br>
-                <h3 class="incompleted_goals">Incomplete:</h3>
+                <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list4">
                     </ul>
             </div>
 
             <div class="completed" id="completed4"><br><br>
-                <h3 class="completed_goals">Complete:</h3>
+                <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list4">
                     </ul>
                     <h4 class="comment" id="Friday_comment"><br>(Uff, finally!)</h4>
@@ -736,11 +699,11 @@
             <div class="new-todo" id="new-todo4">
               <form>
                 <p>
-                  <label for="task" required>WHAT TO DO:</label>
+                  <label for="task" required>{{ _('WHAT TO DO:')}}</label>
                   <input type="text" class="task" name="task" id="task4" required>
                 </p>
                 <p>
-                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <label id ="Clock" for="time" required>{{ _('WHEN:')}}</label>
                   <input type="time" class="time" name="time" id="time4" required>
                 </p>
               </form>
@@ -770,7 +733,7 @@
                     $('#new-todo4 input').val(''); 
                   },
             buttons : {
-              "Add" : function() {
+              "{{ _('Add')}}" : function() {
                 var taskName = $('#task4').val();
                 var dueDate = $('#due-date4').val();
                 var time = $('#time4').val();
@@ -788,23 +751,12 @@
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
-              "Nevermind" : function() {
+              "{{ _('Nevermind')}}" : function() {
                 $(this).dialog('close');
               }
             }
             }); 
 
-            // $(".done").dialog ({
-            //           autoOpen:false,
-            //           show: {
-            //             effect: "blind",
-            //             .duration: 9000
-            //           },
-            //           hide: {
-            //             effect: "explode",
-            //             duration: 9000
-            //           }
-            //         });
 
             $('#todo-list4').on('click','.done',function(e) {
               var $taskItem = $(this).parent("li");
@@ -813,7 +765,7 @@
               $('#completed-list4').prepend($copy);
               $copy.hide().slideDown(); 
               $taskItem.remove();
-              $(".done").append("<div id='doneDialog4'><br>You earn a pat on the back!</div>");
+              $(".done").append("<div id='doneDialog4'><br>{{ _('You earn a pat on the back!')}}</div>");
             }
             ); // end on
             
@@ -834,7 +786,7 @@
   </section>
 
 
-  <section class="section color6" data-letter="Sa">
+  <section class="section color6" data-letter="{{ _('Sa')}}">
     <article class="section__wrapper">
         <div><h1 class="section__title" id="current-date5" name="current-date5"></h1>
         <h1 id="current-time5"></h1></div>
@@ -843,7 +795,7 @@
           var d = new Date();
           document.getElementById("current-date5").innerHTML = d.toDateString();
 
-          function startTime() {
+          function startTimeFive() {
               var today = new Date();
               var h = today.getHours();
               var m = today.getMinutes();
@@ -852,7 +804,7 @@
               s = checkTime(s);
               document.getElementById('current-time5').innerHTML =
               h + ":" + m + ":" + s;
-              var t = setTimeout(startTime, 500);
+              var t = setTimeout(startTimeFive, 500);
           }
 
           function checkTime(i) {
@@ -866,25 +818,27 @@
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo5" />
             <div class="to-do" id="to-do5"><br><br>
-                <h3 class="incompleted_goals">Incomplete:</h3>
+                <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list5">
                     </ul>
             </div>
 
             <div class="completed" id="completed5"><br><br>
-                <h3 class="completed_goals">Complete:</h3>
+                <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list5">
                     </ul>
                     <h4 class="comment" id="Saturday_comment"><br>(Hopefully planning something fun?)</h4>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #fun')}}</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo5">
               <form>
                 <p>
-                  <label for="task" required>WHAT TO DO:</label>
+                  <label for="task" required>{{ _('WHAT TO DO:')}}</label>
                   <input type="text" class="task" name="task" id="task5" required>
                 </p>
                 <p>
-                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <label id ="Clock" for="time" required>{{ _('WHEN:')}}</label>
                   <input type="time" class="time" name="time" id="time5" required>
                 </p>
               </form>
@@ -914,7 +868,7 @@
                     $('#new-todo5 input').val(''); 
                   },
             buttons : {
-              "Add" : function() {
+              "{{ _('Add')}}" : function() {
                 var taskName = $('#task5').val();
                 var dueDate = $('#due-date5').val();
                 var time = $('#time5').val();
@@ -928,11 +882,11 @@
                     'background-color': '#b3ffec',
                   },250)
                     .animate({
-                    'background-color': '#ffa280'
+                    'background-color': '#bdc3c7'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
-              "Nevermind" : function() {
+              "{{ _('Nevermind')}}" : function() {
                 $(this).dialog('close');
               }
             }
@@ -947,7 +901,7 @@
               $copy.hide().slideDown(); 
               $taskItem.remove();
             
-              $(".done").append("<div id='doneDialog5'><br>You earn a pat on the back!</div>");
+              $(".done").append("<div id='doneDialog5'><br>{{ _('You earn a pat on the back!')}}</div>");
 
             }
             ); // end on
@@ -970,7 +924,7 @@
   </section>
 
 
-  <section class="section color7" data-letter="Su">
+  <section class="section color7" data-letter="{{ _('Su')}}">
     <article class="section__wrapper">
         <div><h1 class="section__title" id="current-date6" name="current-date6"></h1>
         <h1 id="current-time6"></h1></div>
@@ -979,7 +933,7 @@
           var d = new Date();
           document.getElementById("current-date6").innerHTML = d.toDateString();
 
-          function startTime() {
+          function startTimeSix() {
               var today = new Date();
               var h = today.getHours();
               var m = today.getMinutes();
@@ -988,7 +942,7 @@
               s = checkTime(s);
               document.getElementById('current-time6').innerHTML =
               h + ":" + m + ":" + s;
-              var t = setTimeout(startTime, 500);
+              var t = setTimeout(startTimeSix, 500);
           }
 
           function checkTime(i) {
@@ -1002,25 +956,27 @@
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo6" />
             <div class="to-do" id="to-do6"><br><br>
-                <h3 class="incompleted_goals">Incomplete:</h3>
+                <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list6">
                     </ul>
             </div>
 
             <div class="completed" id="completed6"><br><br>
-                <h3 class="completed_goals">Complete:</h3>
+                <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list6">
                     </ul>
                     <h4 class="comment" id="Saturday_comment"><br>(Maybe relax for a bit?)</h4>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #relax')}}</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo6">
               <form>
                 <p>
-                  <label for="task" required>WHAT TO DO:</label>
+                  <label for="task" required>{{ _('WHAT TO DO:')}}</label>
                   <input type="text" class="task" name="task" id="task6" required>
                 </p>
                 <p>
-                  <label id ="Clock" for="time" required>WHEN:</label>
+                  <label id ="Clock" for="time" required>{{ _('WHEN:')}}</label>
                   <input type="time" class="time" name="time" id="time6" required>
                 </p>
               </form>
@@ -1050,7 +1006,7 @@
                     $('#new-todo6 input').val(''); 
                   },
             buttons : {
-              "Add" : function() {
+              "{{ _('Add')}}" : function() {
                 var taskName = $('#task6').val();
                 var dueDate = $('#due-date6').val();
                 var time = $('#time6').val();
@@ -1061,30 +1017,19 @@
                 $('#todo-list6').prepend(beginLi + taskLi +  time, + endLi);
                 $('#todo-list6').hide().slideDown(250).find('li:first')
                       .animate({
-                    'background-color': '#b3ffec',
+                    'background-color': '#ff99c2',
                   },250)
                     .animate({
-                    'background-color': '#ffa280'
+                    'background-color': '#b3ffec'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
-              "Nevermind" : function() {
+              "{{ _('Nevermind')}}" : function() {
                 $(this).dialog('close');
               }
             }
             }); 
 
-            // $(".done").dialog ({
-            //           autoOpen:false,
-            //           show: {
-            //             effect: "blind",
-            //             .duration: 9000
-            //           },
-            //           hide: {
-            //             effect: "explode",
-            //             duration: 9000
-            //           }
-            //         });
 
             $('#todo-list6').on('click','.done',function(e) {
               var $taskItem = $(this).parent("li");
@@ -1094,7 +1039,7 @@
               $copy.hide().slideDown(); 
               $taskItem.remove();
 
-              $(".done").append("<div id='doneDialog6'><br>You earn a pat on the back!</div>");
+              $(".done").append("<div id='doneDialog6'><br>{{ _('You earn a pat on the back!')}}</div>");
             }
             ); // end on
             

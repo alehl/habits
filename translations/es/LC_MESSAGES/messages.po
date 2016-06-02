@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-05-31 17:31-0700\n"
-"PO-Revision-Date: 2016-05-31 17:52-0700\n"
+"POT-Creation-Date: 2016-06-02 12:57-0700\n"
+"PO-Revision-Date: 2016-06-02 13:44-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
 "Language-Team: es <LL@li.org>\n"
@@ -19,10 +19,150 @@ msgstr ""
 "Generated-By: Babel 2.3.4\n"
 
 #: templates/about.html:5
-msgid "Aqui"
+msgid "TEXT HERE"
 msgstr ""
 
 #: templates/about.html:8
-msgid "Traduce traduce"
+msgid "TEXT TEXT BODY TEXT"
 msgstr ""
+
+#: templates/weekly_planner.html:30 templates/weekly_planner.html:99
+msgid "M"
+msgstr "L"
+
+#: templates/weekly_planner.html:31
+msgid "Monday"
+msgstr "Lunes"
+
+#: templates/weekly_planner.html:38 templates/weekly_planner.html:251
+msgid "T"
+msgstr "Ma"
+
+#: templates/weekly_planner.html:39 templates/weekly_planner.html:279
+msgid "Tuesday"
+msgstr "Martes"
+
+#: templates/weekly_planner.html:46 templates/weekly_planner.html:387
+msgid "W"
+msgstr "Mi"
+
+#: templates/weekly_planner.html:47
+msgid "Wednesday"
+msgstr "Mièrcoles"
+
+#: templates/weekly_planner.html:54 templates/weekly_planner.html:521
+msgid "Th"
+msgstr "J"
+
+#: templates/weekly_planner.html:55
+msgid "Thursday"
+msgstr "Jueves"
+
+#: templates/weekly_planner.html:62 templates/weekly_planner.html:656
+msgid "F"
+msgstr "V"
+
+#: templates/weekly_planner.html:63
+msgid "Friday"
+msgstr "Viernes"
+
+#: templates/weekly_planner.html:70 templates/weekly_planner.html:789
+msgid "Sa"
+msgstr "S"
+
+#: templates/weekly_planner.html:71
+msgid "Saturday"
+msgstr "Sàbado"
+
+#: templates/weekly_planner.html:78 templates/weekly_planner.html:927
+msgid "Su"
+msgstr "D"
+
+#: templates/weekly_planner.html:79
+msgid "Sunday"
+msgstr "Domingo"
+
+#: templates/weekly_planner.html:139 templates/weekly_planner.html:284
+#: templates/weekly_planner.html:419 templates/weekly_planner.html:555
+#: templates/weekly_planner.html:688 templates/weekly_planner.html:821
+#: templates/weekly_planner.html:959
+msgid "Incomplete:"
+msgstr "Incompleto:"
+
+#: templates/weekly_planner.html:146 templates/weekly_planner.html:290
+#: templates/weekly_planner.html:425 templates/weekly_planner.html:561
+#: templates/weekly_planner.html:694 templates/weekly_planner.html:827
+#: templates/weekly_planner.html:965
+msgid "Complete:"
+msgstr "Completo:"
+
+#: templates/weekly_planner.html:150
+msgid "(Fresh start!)"
+msgstr "(¡Inicio de semana!)"
+
+#: templates/weekly_planner.html:151
+msgid "Tweet #productive"
+msgstr "#BienTrabajador"
+
+#: templates/weekly_planner.html:159 templates/weekly_planner.html:301
+#: templates/weekly_planner.html:435 templates/weekly_planner.html:571
+#: templates/weekly_planner.html:702 templates/weekly_planner.html:837
+#: templates/weekly_planner.html:975
+msgid "WHAT TO DO:"
+msgstr "QUÈ HACER:"
+
+#: templates/weekly_planner.html:164 templates/weekly_planner.html:305
+#: templates/weekly_planner.html:439 templates/weekly_planner.html:575
+#: templates/weekly_planner.html:706 templates/weekly_planner.html:841
+#: templates/weekly_planner.html:979
+msgid "WHEN:"
+msgstr "CUÀNDO:"
+
+#: templates/weekly_planner.html:198 templates/weekly_planner.html:335
+#: templates/weekly_planner.html:469 templates/weekly_planner.html:605
+#: templates/weekly_planner.html:736 templates/weekly_planner.html:871
+#: templates/weekly_planner.html:1009
+msgid "Add"
+msgstr "Agregar"
+
+#: templates/weekly_planner.html:218 templates/weekly_planner.html:353
+#: templates/weekly_planner.html:487 templates/weekly_planner.html:623
+#: templates/weekly_planner.html:754 templates/weekly_planner.html:889
+#: templates/weekly_planner.html:1027
+msgid "Nevermind"
+msgstr "Olvidalo"
+
+#: templates/weekly_planner.html:231 templates/weekly_planner.html:366
+#: templates/weekly_planner.html:768 templates/weekly_planner.html:904
+#: templates/weekly_planner.html:1042
+msgid "You earn a pat on the back!"
+msgstr "¡Besito y apapacho para ti!"
+
+#: templates/weekly_planner.html:294
+msgid "Tweet #tuesdaygoals"
+msgstr "#BienTrabajador"
+
+#: templates/weekly_planner.html:429
+msgid "Tweet #goals"
+msgstr "#BienTrabajador"
+
+#: templates/weekly_planner.html:501
+msgid "&nbsp; You get a <br>gold star!"
+msgstr "¡Bien hecho!"
+
+#: templates/weekly_planner.html:565
+msgid "Tweet #fruitful"
+msgstr "#BienTrabajador"
+
+#: templates/weekly_planner.html:636
+msgid "Great work!"
+msgstr "¡Te ganas una estrella de oro!"
+
+#: templates/weekly_planner.html:831
+msgid "Tweet #fun"
+msgstr "#BienTrabajador"
+
+#: templates/weekly_planner.html:969
+msgid "Tweet #relax"
+msgstr "#BienTrabajador"
 

@@ -24,23 +24,6 @@ def index():
 
 ##################################################
 
-@babel.localeselector
-def get_locale():
-    """Direct babel to use the language defined in the session."""
-    return g.get('current_lang', 'es')
-
-@app.before_request
-def before():
-    if request.view_args and 'lang_code' in request.view_args:
-        if request.view_args['lang_code'] not in ('es', 'en'):
-            return abort(404)
-        g.current_lang = request.view_args['lang_code']
-        request.view_args.pop('lang_code')
-
-@app.route('/$lt;lang_code&gt;/about')
-def about():
-    return render_template('about.html')
-
 ##################################################
 @app.route('/choose_achievement')
 def chooseachievement():
@@ -63,6 +46,7 @@ def before_request():
 ##################################################
 
 @app.route('/login', methods=['POST'])
+# @app.route('/login')
 def login():
     """'password' is the default pwd and begins session if entered"""
 
@@ -96,11 +80,9 @@ def login():
             print "added to DB"
 
         return render_template('path_to_wp.html', username=username)
-        
-        # else:
-        #     Clear the field in the form
-        #     display an error
 
+
+        
 ##################################################
 
 @app.route('/logout')
@@ -112,9 +94,24 @@ def logout():
 
 ##################################################
 
+@babel.localeselector
+def get_locale():
+    """Direct babel to use the language defined in the session."""
+    
+    return g.get('current_lang', 'es')
+
+
+@app.before_request
+def before():
+    if request.view_args and 'lang_code' in request.view_args:
+        g.current_lang = request.view_args['lang_code']
+        request.view_args.pop('lang_code')
+
+
+
+@app.route('/<lang_code>/results')
 @app.route('/results')
 def see_results():
-    """This will display what the user created or the achievement they selected"""
 
     new_achievement = request.values.get('createnew')
     selected_achievement = request.values.get('choosefrom')
@@ -168,7 +165,7 @@ if __name__ == '__main__':
     app.debug = True
     connect_to_db(app)
 
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
 
     app.run()
 

@@ -131,6 +131,11 @@ body {
   font-weight: 600;
   text-transform: uppercase;
 }
+
+.quote-author {
+  font-size: 30;
+}
+
 .card .input-container {
   position: relative;
   margin: 0 60px 50px;
@@ -194,9 +199,9 @@ body {
 .card .input-container .bar:after {
   right: 50%;
 }
-.card .button-container {
+/*.card .button-container {
   margin: 0 60px;
-  text-align: center;
+  text-align: center;*/
 }
 .card .button-container button {
   outline: 0;
@@ -280,10 +285,6 @@ body {
   padding: 0;
   -webkit-transition: .3s ease;
   transition: .3s ease;
-  /* Toggle */
-  /* Title */
-  /* Input */
-  /* Button */
 }
 /*circle button*/
 
@@ -332,6 +333,8 @@ body {
   color: #ffffff;
   font-size: 58px;
   font-weight: 400;
+  content: '\f004';
+  
 }
 .card.alt .title .close:before {
   content: '\00d7';
@@ -354,18 +357,18 @@ body {
 .card.alt .input-container .bar {
   background: rgba(255, 255, 255, 0.8);
 }
-.card.alt .button-container button {
+/*.card.alt .button-container .button {
   width: 100%;
   background: #ffffff;
   border-color: #ffffff;
+}*/
+/*.button-container .button span {
+  color: #ed2553;*/
 }
-.card.alt .button-container button span {
-  color: #ed2553;
+/*.button-container .button:hover {
+  background: rgba(255, 255, 255, 0.9);*/
 }
-.card.alt .button-container button:hover {
-  background: rgba(255, 255, 255, 0.9);
-}
-.card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
+.button-container .button:active:before, .card.alt .button-container button:focus:before {
   display: none;
 }
 
