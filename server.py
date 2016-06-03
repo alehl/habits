@@ -78,7 +78,7 @@ def login():
             db.session.add(new_user)
             db.session.commit()
             print "added to DB"
-
+        session['lang'] = 'en'
         return render_template('path_to_wp.html', username=username)
 
 
@@ -94,30 +94,36 @@ def logout():
 
 ##################################################
 
+@app.route('/set_lang')
+def setlang():
+    session['lang'] = request.args.get('lang')
+    return ""
+
 @babel.localeselector
 def get_locale():
     """Direct babel to use the language defined in the session."""
-    
-    return g.get('current_lang', 'es')
+
+    return g.get('current_lang', session.get('lang','en'))
 
 
 @app.before_request
 def before():
     if request.view_args and 'lang_code' in request.view_args:
         g.current_lang = request.view_args['lang_code']
+        session['lang'] = g.current_lang
         request.view_args.pop('lang_code')
 
 
 
 @app.route('/<lang_code>/results')
 @app.route('/results')
-def see_results():
-
+def see_results():   
+    print "language:", session['lang']
     new_achievement = request.values.get('createnew')
     selected_achievement = request.values.get('choosefrom')
 
     if new_achievement == "new":
-        return render_template("weekly_planner.html")
+        return render_template("weekly_planner.html", session=session)
 
 
 ##################################################

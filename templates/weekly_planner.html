@@ -4,7 +4,7 @@
 <head>
 
 <title>Weekly Planner</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -83,7 +83,6 @@
 
   </ul>
 
-
   <div class="burger burger--close">
     <div class="burger__patty"></div>
   </div>
@@ -92,7 +91,6 @@
 
 <!-- Nav Bar Ends -->
 <h1 id="current-time"></h1></div>
-<h1 id="current-time1"></h1></div>
 
 <div class="page" id="tabs">
 
@@ -102,7 +100,7 @@
 
         <div><h1 class="section__title" id="current-date" name="current-date"></h1>
 
-        <!-- <h1 id="current-time"></h1></div> -->
+        <h1 id="current-time"></h1></div>
 
         <script>
 
@@ -133,7 +131,7 @@
       <div class="Monday" id="Monday" class="tabcontent" name="Monday">
       <br><br><br><br><br>
 
-      <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo" />
+      <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo" />
             <div class="to-do" id="to-do"><br><br>
 
                 <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
@@ -148,11 +146,12 @@
                     </ul>
 
                 <h4 class="comment" id="Monday_comment"><br>{{ _('(Fresh start!)')}}</h4>
+
                 <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #productive')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
 
-            <div class="new-todo" id="new-todo">
+            <div class="new-todo" id="new-todo" style="display:none;">
               <form>
 
                 <p>
@@ -279,7 +278,7 @@
       <div class="Tuesday" id="Tuesday" class="tabcontent" name="{{ _('Tuesday')}}">
       <br><br><br><br><br>
 
-      <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo1" />
+      <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo1" />
             <div class="to-do" id="to-do1"><br><br>
                 <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list1">
@@ -290,12 +289,12 @@
                 <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list1">
                     </ul>
-                    <p id="Tuesday_comment"><br>(Yeah, it's tuesday... but you can do it)</p>
+                    <h4 class="comment" id="Tuesday_comment"><br>{{ _('(You can make it through this week)')}}</h4>
                     <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #tuesdaygoals')}}</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-            <div class="new-todo" id="new-todo1">
+            <div class="new-todo" id="new-todo1" style="display:none;">
               <form>
                 <p>
                   <label for="task" required>{{ _('WHAT TO DO:')}}</label>
@@ -414,7 +413,7 @@
 
       <div class="Wednesday" id="Wednesday" class="tabcontent" name="Wednesday">
       <br><br><br><br><br>
-      <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo2" />
+      <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo2" />
             <div class="to-do" id="to-do2"><br><br>
                 <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list2">
@@ -425,11 +424,11 @@
                 <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list2">
                     </ul>
-                    <h4 class="comment" id="Wednesday_comment"><br>(Halfway there...)</h4>
+                    <h4 class="comment" id="Wednesday_comment"><br>{{ _('(Halfway there)')}}</h4>
                     <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #goals')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-            <div class="new-todo" id="new-todo2">
+            <div class="new-todo" id="new-todo2" style="display:none;">
               <form>
                 <p>
                   <label for="task" required>{{ _('WHAT TO DO:')}}</label>
@@ -550,7 +549,7 @@
 
       <div class="Thursday" id="Thursday" class="tabcontent" name="Thursday">
       <br><br><br><br><br>
-      <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo3" />
+      <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo3" />
             <div class="to-do" id="to-do3"><br><br>
                 <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list3">
@@ -561,11 +560,11 @@
                 <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list3">
                     </ul>
-                    <h4 class="comment" id="Wednesday_comment"><br>(Almost there...)</h4>
+                    <h4 class="comment" id="Wednesday_comment"><br>{{ _('(Almost there...)')}}</h4>
                     <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #fruitful')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-            <div class="new-todo" id="new-todo3">
+            <div class="new-todo" id="new-todo3" style="display:none;">
               <form>
                 <p>
                   <label for="task" required>{{ _('WHAT TO DO:')}}</label>
@@ -683,7 +682,7 @@
 
       <div class="Friday" id="Friday" class="tabcontent" name="Friday">
       <br><br><br><br><br>
-      <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo4" />
+      <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo4" />
             <div class="to-do" id="to-do4"><br><br>
                 <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list4">
@@ -694,9 +693,9 @@
                 <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list4">
                     </ul>
-                    <h4 class="comment" id="Friday_comment"><br>(Uff, finally!)</h4>
+                    <h4 class="comment" id="Friday_comment"><br>{{ _('(Finally!)')}}</h4>
             </div>
-            <div class="new-todo" id="new-todo4">
+            <div class="new-todo" id="new-todo4" style="display:none;">
               <form>
                 <p>
                   <label for="task" required>{{ _('WHAT TO DO:')}}</label>
@@ -747,7 +746,7 @@
                     'background-color': '#b3ffec',
                   },250)
                     .animate({
-                    'background-color': '#ffa280'
+                    'background-color': '#bdc3c7'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
@@ -816,7 +815,7 @@
 
       <div class="Saturday" id="Saturday5" class="tabcontent" name="Saturday">
       <br><br><br><br><br>
-      <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo5" />
+      <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo5" />
             <div class="to-do" id="to-do5"><br><br>
                 <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list5">
@@ -827,11 +826,11 @@
                 <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list5">
                     </ul>
-                    <h4 class="comment" id="Saturday_comment"><br>(Hopefully planning something fun?)</h4>
+                    <h4 class="comment" id="Saturday_comment"><br>{{ _('(Hopefully planning something fun...)')}}</h4>
                     <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #fun')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-            <div class="new-todo" id="new-todo5">
+            <div class="new-todo" id="new-todo5" style="display:none;">
               <form>
                 <p>
                   <label for="task" required>{{ _('WHAT TO DO:')}}</label>
@@ -882,7 +881,7 @@
                     'background-color': '#b3ffec',
                   },250)
                     .animate({
-                    'background-color': '#bdc3c7'
+                    'background-color': '#ffa280'
                   },250).animate; // end animate
                 $(this).dialog('close');
               },
@@ -952,9 +951,9 @@
 
         </script>
 
-      <div class="Saturday" id="Saturday6" class="tabcontent" name="Saturday">
+      <div class="Sunday" id="Sunday6" class="tabcontent" name="Sunday">
       <br><br><br><br><br>
-      <input onclick= "change()" type="button" class="addButton" value="&plus; new" id="add-todo6" />
+      <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo6" />
             <div class="to-do" id="to-do6"><br><br>
                 <h3 class="incompleted_goals">{{ _('Incomplete:')}}</h3>
                     <ul class="todo-list" id="todo-list6">
@@ -965,11 +964,11 @@
                 <h3 class="completed_goals">{{ _('Complete:')}}</h3>
                     <ul class="completed-list" id="completed-list6">
                     </ul>
-                    <h4 class="comment" id="Saturday_comment"><br>(Maybe relax for a bit?)</h4>
+                    <h4 class="comment" id="Saturday_comment"><br>{{ _('(Maybe relax for a bit?)')}}</h4>
                     <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #relax')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-            <div class="new-todo" id="new-todo6">
+            <div class="new-todo" id="new-todo6" style="display:none;">
               <form>
                 <p>
                   <label for="task" required>{{ _('WHAT TO DO:')}}</label>

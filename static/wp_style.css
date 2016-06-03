@@ -17,6 +17,7 @@
     opacity: .50
     filter: Alpha(Opacity=50);
     border: none;
+    display: none;
 }
 
 .ui-dialog .ui-dialog-titlebar {
@@ -426,10 +427,10 @@ ul {
   background: #ff99c2;
 }
 .color5 {
-  background: #ffa280;
+  background: #bdc3c7;
 }
 .color6 {
-  background: #bdc3c7;
+  background: #ffa280;
 }
 .color7 {
   background: #b3ffec;
