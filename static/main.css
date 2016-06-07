@@ -34,7 +34,7 @@ body {
 .kanguro1, .donkey1, .pooh1 {
 	font-family: 'Muli', sans-serif;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 30px;
 }
 
 ol, ul {
@@ -89,9 +89,9 @@ p {
 	margin:50em 0;
 	}
 
-
-#create_confirmation {
-  background-color: #21a97e;
+/*
+.button {
+  background-color: #ff4d94;
   border-radius: 4px;
   border: none;
   color: #FFFFFF;
@@ -103,10 +103,79 @@ p {
   cursor: pointer;
   margin: 5px;
 
+}*/
+
+.button {
+    position: relative;
+    width: 100px;
+    height: 90px;
+    float: left;
+    background-color: #ff4d94;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    width: 75px;
+    transition: all 0.5s;
+    cursor: pointer;
+/*    margin: 5px;*/
 }
-#bear_name {
-  color: #ffa280;
+.button {
+  background: #ff4d94;
+  border-radius: 6px;
+  cursor: pointer;
+  transition-property: background, border-radius;
+  transition-duration: .2s, 1s;
+  transition-timing-function: linear, ease-in;
+  width: 95px;
 }
+.button:hover {
+  background: #ff4d94;
+  border-radius: 75%;
+}
+
+
+/*HEART*/
+/*
+.button:before,
+.button:after{
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    opacity: 3;
+    background: #fc2e5a;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+.button:after{
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+*/
 /* Nav
 *****************************************************************/
 
