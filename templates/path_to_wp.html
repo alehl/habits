@@ -1,61 +1,190 @@
+<!DOCTYPE html>
+
 <html>
+
 <head>
-	<title>On our way to the weekly planner</title>
-	
+
+	<title>Habits | Story</title>
+
 <link rel="stylesheet" href="static/reset.css">
 <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
 <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-<link rel="stylesheet" href="static/transition_style.css">
 
-</head>
-<body>
-<div class="parallax brick" data-id="brick-1" data-start="200" data-stop="1150"></div>
+<meta charset="utf-8" />
+<meta name="description" content="A parallax scrolling experiment using jQuery" />
 
-	<br><h1 action='/choose_achievement' method="POST", "GET">This is the story about a little bear called {{ username }}. This little bear always forgets where everything is. Help {{ username }} set some habits and restore order for once!</h1><br>
+<link rel="stylesheet" media="all" href="static/main.css" />
 
-<!-- This will take you to the page where you will create your own achievement -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
+<script>!window.jQuery && document.write('<script src="/js/jquery-1.6.1.min.js"></script>')</script>
 
-</div>
+	</head>
 
-	<form action='/results'>
+	<body>
 
-		<span id="ok-create-achievement"></span>
-		<button type="submit" id= "create_confirmation" name="createnew" value="new">
-			Weekly planner</button>
-	</form>
+		<div id="wrapper">
+			
+			<header id="branding">
 
+			</header>
+			
+			<nav id="primary">
+				<ul>
+					<li>
+						<a class="pooh1" href="#pooh1"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+					</li>
+					<li>
+						<a class="donkey1" href="#donkey1">story</a>
+					</li>
+					<li>
+						<a class="kanguro1" href="#kanguro1"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+					</li>
+					<li>
+
+						<a class="about" href="#about"></a>
+					</li>
+					<li>
+					<form action='/results'><br>
+
+					<span id="ok-create-achievement"></span>
+					<button type="submit" id= "create_confirmation" name="createnew" class="button" value="new"/><span>Weekly planner</span></button>
+					</form>
+					</li>
+				</ul>
+			</nav>
+			
+			<div id="content">
+				<article id="pooh1">
+					<header>
+						<h1 action='/choose_achievement' method="POST", "GET">This is the story about a little bear called <span color="#ffa280">{{ username }}</span>. Besides eating honey, this little bear always forgets where everything is, and tends to forget to do all those things that need to be done. <br>Help <span color="#ffa280">{{ username }}</span> not get distracted!</h1>
+					</header>
+					<p></p>
+
+					</nav>
+				</article>
+				
+				<article id="donkey1">
+				</article>
+				
+				<article id="kanguro1">
+				</article>
+				
+				<article id="about">
+				</article>
+			</div>
+			
+			<!-- Parallax foreground -->
+			<div id="parallax-bg3">
+				<img id="bg3-1" src="static/balloon.png" width="529" height="757"/>
+				<img id="bg3-2" src="static/balloon2.png" width="603" height="583"/>
+				<img id="bg3-3" src="static/balloon3.png" width="446" height="713"/>
+/
+			</div>
+			
+			<!-- Parallax  midground clouds -->
+			<div id="parallax-bg2">
+				<img id="bg2-1" src="static/cloud-lg1.png" alt="cloud"/>
+				<img id="bg2-2" src="static/cloud-lg1.png" alt="cloud"/>
+				<img id="bg2-3" src="static/cloud-lg1.png" alt="cloud"/>
+				<img id="bg2-4" src="static/cloud-lg1.png" alt="cloud"/>
+				<img id="bg2-5" src="static/cloud-lg1.png" alt="cloud"/>
+			</div>
+			
+			<!-- Parallax  background clouds -->
+			<div id="parallax-bg1">
+				<img id="bg1-1" src="static/cloud-lg2.png" alt="cloud"/>
+				<img id="bg1-2" src="static/cloud-lg2.png" alt="cloud"/>
+				<img id="bg1-3" src="static/cloud-lg2.png" alt="cloud"/>
+				<img id="bg1-4" src="static/cloud-lg2.png" alt="cloud"/>
+			</div>
+		
+		</div>
+	
+	</body>
 <script>
-		var createAchievement = document.getElementById("ok-create-achievement");
-		var button_left = document.getElementById("create_confirmation")
-		function changeMessage() {
-			button_left.innerText = "Ok, let's do it!"
+	$(document).ready(function() {
+	
+	redrawDotNav();
+	
+	/* Scroll event handler */
+    $(window).bind('scroll',function(e){
+    	parallaxScroll();
+		redrawDotNav();
+    });
+    
+	/* Next/prev and primary nav btn click handlers */
+	$('a.pooh1').click(function(){
+    	$('html, body').animate({
+    		scrollTop:0
+    	}, 1000, function() {
+	    	parallaxScroll(); // Callback is required for iOS
+		});
+    	return false;
+	});
+    $('a.donkey1').click(function(){
+    	$('html, body').animate({
+    		scrollTop:$('#donkey1').offset().top
+    	}, 1000, function() {
+	    	parallaxScroll(); // Callback is required for iOS
+		});
+    	return false;
+    });
+    $('a.kanguro1').click(function(){
+    	$('html, body').animate({
+    		scrollTop:$('#kanguro1').offset().top
+    	}, 1000, function() {
+	    	parallaxScroll(); // Callback is required for iOS
+		});
+    	return false;
+    });
+	$('a.about').click(function(){
+    	$('html, body').animate({
+    		scrollTop:$('#about').offset().top
+    	}, 1000, function() {
+	    	parallaxScroll(); // Callback is required for iOS
+		});
+    	return false;
+    });
+    
+    /* Show/hide dot lav labels on hover */
+    $('nav#primary a').hover(
+    	function () {
+			$(this).prev('h1').show();
+		},
+		function () {
+			$(this).prev('h1').hide();
 		}
-	button_left.addEventListener("click", changeMessage);
-</script>
+    );
+    
+});
 
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+/* Scroll the background layers */
+function parallaxScroll(){
+	var scrolled = $(window).scrollTop();
+	$('#parallax-bg1').css('top',(0-(scrolled*.25))+'px');
+	$('#parallax-bg2').css('top',(0-(scrolled*.5))+'px');
+	$('#parallax-bg3').css('top',(0-(scrolled*.75))+'px');
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
+/* Set navigation dots to an active state as the user scrolls */
+function redrawDotNav(){
+	var section1Top =  0;
+	// The top of each section is offset by half the distance to the previous section.
+	var section2Top =  $('#donkey1').offset().top - (($('#kanguro1').offset().top - $('#donkey1').offset().top) / 2);
+	var section3Top =  $('#kanguro1').offset().top - (($('#about').offset().top - $('#kanguro1').offset().top) / 2);
+	var section4Top =  $('#about').offset().top - (($(document).height() - $('#about').offset().top) / 2);;
+	$('nav#primary a').removeClass('active');
+	if($(document).scrollTop() >= section1Top && $(document).scrollTop() < section2Top){
+		$('nav#primary a.pooh1').addClass('active');
+	} else if ($(document).scrollTop() >= section2Top && $(document).scrollTop() < section3Top){
+		$('nav#primary a.donkey1').addClass('active');
+	} else if ($(document).scrollTop() >= section3Top && $(document).scrollTop() < section4Top){
+		$('nav#primary a.kanguro1').addClass('active');
+	} else if ($(document).scrollTop() >= section4Top){
+		$('nav#primary a.about').addClass('active');
+	}
+	
 }
 </script>
 
-
-</body>
 </html>

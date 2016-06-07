@@ -199,31 +199,34 @@ body {
 .card .input-container .bar:after {
   right: 50%;
 }
-/*.card .button-container {
+.card .button-container {
   margin: 0 60px;
-  text-align: center;*/
+  text-align: center;
 }
 .card .button-container button {
-  outline: 0;
+  outline: 1;
   cursor: pointer;
   position: relative;
   display: inline-block;
   background: 0;
   width: 240px;
-  border: 2px solid #e3e3e3;
+  border: 2px solid #ffa280;
   padding: 20px 0;
   font-size: 24px;
+  font-color: #ffffff;
+  background-color: #ffa280;
   font-weight: 600;
+  border-radius: 5px;
   line-height: 1;
   text-transform: uppercase;
   overflow: hidden;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
 }
 .card .button-container button span {
   position: relative;
   z-index: 1;
-  color: #ddd;
+  color: #ffffff;
   -webkit-transition: .3s ease;
   transition: .3s ease;
 }
@@ -233,7 +236,7 @@ body {
   top: 50%;
   left: 50%;
   display: block;
-  background: #ffd480;
+  background: #ffffff;
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -242,6 +245,12 @@ body {
   -webkit-transition: .3s ease;
   transition: .3s ease;
 }
+
+
+.button{
+  display: none;
+}
+
 .card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
   border-color: #ffd480;
 }
@@ -356,20 +365,22 @@ body {
 }
 .card.alt .input-container .bar {
   background: rgba(255, 255, 255, 0.8);
-}
-/*.card.alt .button-container .button {
-  width: 100%;
-  background: #ffffff;
-  border-color: #ffffff;
-}*/
-/*.button-container .button span {
-  color: #ed2553;*/
-}
-/*.button-container .button:hover {
-  background: rgba(255, 255, 255, 0.9);*/
+
 }
 .button-container .button:active:before, .card.alt .button-container button:focus:before {
   display: none;
+}
+
+#honey_jar {
+width: 80px;
+height: 80px;
+display: flex;
+justify-content: right;
+
+}
+
+#go {
+  color: white;
 }
 
 /* Keyframes */
@@ -385,3 +396,5 @@ body {
     opacity: 0;
   }
 }
+
+

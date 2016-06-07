@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Weekly Planner</title>
+<title>Habits | Weekly Planner</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
@@ -106,7 +106,8 @@
 
           var d = new Date();
 
-          document.getElementById("current-date").innerHTML = d.toDateString();
+          {{ _('document.getElementById("current-date").innerHTML = d.toDateString();')}}
+
 
           function startTime() {
               var today = new Date();
@@ -129,7 +130,9 @@
 
 
       <div class="Monday" id="Monday" class="tabcontent" name="Monday">
+        <a href="/en/results?createnew=new">English</a> | <a href="/es/results?createnew=new">Spanish</a>
       <br><br><br><br><br>
+
 
       <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo" />
             <div class="to-do" id="to-do"><br><br>
@@ -147,7 +150,7 @@
 
                 <h4 class="comment" id="Monday_comment"><br>{{ _('(Fresh start!)')}}</h4>
 
-                <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #productive')}}</a>
+                <a href="https://twitter.com/intent/tweet?button_hashtag={{ _('productive')}}" class="twitter-hashtag-button">{{ _('Tweet #productive')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
 
@@ -254,7 +257,7 @@
  -->
         <script>
           var d = new Date();
-          document.getElementById("current-date1").innerHTML = d.toDateString();
+          {{ _('document.getElementById("current-date1").innerHTML = d.toDateString();')}}
 
           function startTimeOne() {
               var today = new Date();
@@ -276,6 +279,7 @@
         </script>
 
       <div class="Tuesday" id="Tuesday" class="tabcontent" name="{{ _('Tuesday')}}">
+        <a href="/en/results?createnew=new">English</a> | <a href="/es/results?createnew=new">Spanish</a>
       <br><br><br><br><br>
 
       <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo1" />
@@ -290,7 +294,7 @@
                     <ul class="completed-list" id="completed-list1">
                     </ul>
                     <h4 class="comment" id="Tuesday_comment"><br>{{ _('(You can make it through this week)')}}</h4>
-                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #tuesdaygoals')}}</a>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag={{ _('tuesdaygoals')}}" class="twitter-hashtag-button">{{ _('Tweet #tuesdaygoals')}}</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
@@ -390,7 +394,7 @@
 
         <script>
           var d = new Date();
-          document.getElementById("current-date2").innerHTML = d.toDateString();
+          {{ _('document.getElementById("current-date2").innerHTML = d.toDateString();')}}
 
           function startTimeTwo() {
               var today = new Date();
@@ -412,6 +416,7 @@
         </script>
 
       <div class="Wednesday" id="Wednesday" class="tabcontent" name="Wednesday">
+        <a href="/en/results?createnew=new">English</a> | <a href="/es/results?createnew=new">Spanish</a>
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo2" />
             <div class="to-do" id="to-do2"><br><br>
@@ -425,7 +430,7 @@
                     <ul class="completed-list" id="completed-list2">
                     </ul>
                     <h4 class="comment" id="Wednesday_comment"><br>{{ _('(Halfway there)')}}</h4>
-                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #goals')}}</a>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag={{ _('goals')}}" class="twitter-hashtag-button">{{ _('Tweet #goals')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo2" style="display:none;">
@@ -525,7 +530,7 @@
 
         <script>
           var d = new Date();
-          document.getElementById("current-date3").innerHTML = d.toDateString();
+          {{ _('document.getElementById("current-date3").innerHTML = d.toDateString();')}}
 
           function startTimeThree() {
               var today = new Date();
@@ -548,6 +553,7 @@
 
 
       <div class="Thursday" id="Thursday" class="tabcontent" name="Thursday">
+        <a href="/en/results?createnew=new">English</a> | <a href="/es/results?createnew=new">Spanish</a>
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo3" />
             <div class="to-do" id="to-do3"><br><br>
@@ -561,7 +567,7 @@
                     <ul class="completed-list" id="completed-list3">
                     </ul>
                     <h4 class="comment" id="Wednesday_comment"><br>{{ _('(Almost there...)')}}</h4>
-                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #fruitful')}}</a>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag={{ _('fruitful')}}" class="twitter-hashtag-button">{{ _('Tweet #fruitful')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo3" style="display:none;">
@@ -659,7 +665,7 @@
 
         <script>
           var d = new Date();
-          document.getElementById("current-date4").innerHTML = d.toDateString();
+          {{ _('document.getElementById("current-date4").innerHTML = d.toDateString();')}}
 
           function startTimeFour() {
               var today = new Date();
@@ -681,6 +687,7 @@
         </script>
 
       <div class="Friday" id="Friday" class="tabcontent" name="Friday">
+        <a href="/en/results?createnew=new">English</a> | <a href="/es/results?createnew=new">Spanish</a>
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo4" />
             <div class="to-do" id="to-do4"><br><br>
@@ -694,6 +701,10 @@
                     <ul class="completed-list" id="completed-list4">
                     </ul>
                     <h4 class="comment" id="Friday_comment"><br>{{ _('(Finally!)')}}</h4>
+
+
+                    <a href="https://twitter.com/intent/tweet?button_hashtag={{ _('finallyfriday')}}" class="twitter-hashtag-button">{{ _('Tweet #finallyfriday')}}</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo4" style="display:none;">
               <form>
@@ -737,8 +748,8 @@
                 var dueDate = $('#due-date4').val();
                 var time = $('#time4').val();
                 var beginLi = '<li><span style="cursor:pointer" class="done"><i class="fa fa-check"> </i></span><span  style="cursor:pointer" class="delete"><i class="fa fa-times"> </i></span>';
-                var taskLi = '<span class="task"> &nbsp;' +   taskName + ' &nbsp; </span>';
-                var timeLi = '<span class="time">&nbsp;'+ time + '&nbsp;</span>';
+                var taskLi = '<span class="task" contenteditable> &nbsp;' +   taskName + ' &nbsp; </span>';
+                var timeLi = '<span class="time" contenteditable>&nbsp;'+ time + '&nbsp;</span>';
                 var endLi = '</li>';
                 $('#todo-list4').prepend(beginLi + taskLi +  time, + endLi);
                 $('#todo-list4').hide().slideDown(250).find('li:first')
@@ -792,7 +803,7 @@
 
         <script>
           var d = new Date();
-          document.getElementById("current-date5").innerHTML = d.toDateString();
+          {{ _('document.getElementById("current-date5").innerHTML = d.toDateString();')}}
 
           function startTimeFive() {
               var today = new Date();
@@ -814,6 +825,7 @@
         </script>
 
       <div class="Saturday" id="Saturday5" class="tabcontent" name="Saturday">
+        <a href="/en/results?createnew=new">English</a> | <a href="/es/results?createnew=new">Spanish</a>
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo5" />
             <div class="to-do" id="to-do5"><br><br>
@@ -827,7 +839,7 @@
                     <ul class="completed-list" id="completed-list5">
                     </ul>
                     <h4 class="comment" id="Saturday_comment"><br>{{ _('(Hopefully planning something fun...)')}}</h4>
-                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #fun')}}</a>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag={{ _('fun')}}" class="twitter-hashtag-button">{{ _('Tweet #fun')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo5" style="display:none;">
@@ -930,7 +942,7 @@
 
         <script>
           var d = new Date();
-          document.getElementById("current-date6").innerHTML = d.toDateString();
+          {{ _('document.getElementById("current-date6").innerHTML = d.toDateString();')}}
 
           function startTimeSix() {
               var today = new Date();
@@ -952,6 +964,7 @@
         </script>
 
       <div class="Sunday" id="Sunday6" class="tabcontent" name="Sunday">
+        <a href="/en/results?createnew=new">English</a> | <a href="/es/results?createnew=new">Spanish</a>
       <br><br><br><br><br>
       <input onclick= "change()" type="button" class="addButton" value="{{ _('&plus; new')}}" id="add-todo6" />
             <div class="to-do" id="to-do6"><br><br>
@@ -965,7 +978,7 @@
                     <ul class="completed-list" id="completed-list6">
                     </ul>
                     <h4 class="comment" id="Saturday_comment"><br>{{ _('(Maybe relax for a bit?)')}}</h4>
-                    <a href="https://twitter.com/intent/tweet?button_hashtag=productive" class="twitter-hashtag-button">{{ _('Tweet #relax')}}</a>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag={{ _('relax')}}" class="twitter-hashtag-button">{{ _('Tweet #relax')}}</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="new-todo" id="new-todo6" style="display:none;">

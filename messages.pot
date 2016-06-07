@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-06-02 15:02-0700\n"
+"POT-Creation-Date: 2016-06-03 08:53-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "TEXT TEXT BODY TEXT"
 msgstr ""
 
-#: templates/weekly_planner.html:30 templates/weekly_planner.html:98
+#: templates/weekly_planner.html:30 templates/weekly_planner.html:97
 msgid "M"
 msgstr "L"
 
@@ -33,15 +33,15 @@ msgstr "L"
 msgid "Monday"
 msgstr "Lunes"
 
-#: templates/weekly_planner.html:38 templates/weekly_planner.html:250
+#: templates/weekly_planner.html:38 templates/weekly_planner.html:253
 msgid "T"
 msgstr "Ma"
 
-#: templates/weekly_planner.html:39 templates/weekly_planner.html:278
+#: templates/weekly_planner.html:39 templates/weekly_planner.html:281
 msgid "Tuesday"
 msgstr "Martes"
 
-#: templates/weekly_planner.html:46 templates/weekly_planner.html:386
+#: templates/weekly_planner.html:46 templates/weekly_planner.html:390
 msgid "W"
 msgstr "Mi"
 
@@ -49,7 +49,7 @@ msgstr "Mi"
 msgid "Wednesday"
 msgstr "Miércoles"
 
-#: templates/weekly_planner.html:54 templates/weekly_planner.html:520
+#: templates/weekly_planner.html:54 templates/weekly_planner.html:525
 msgid "Th"
 msgstr "J"
 
@@ -57,7 +57,7 @@ msgstr "J"
 msgid "Thursday"
 msgstr "Jueves"
 
-#: templates/weekly_planner.html:62 templates/weekly_planner.html:655
+#: templates/weekly_planner.html:62 templates/weekly_planner.html:661
 msgid "F"
 msgstr "V"
 
@@ -65,7 +65,7 @@ msgstr "V"
 msgid "Friday"
 msgstr "Viernes"
 
-#: templates/weekly_planner.html:70 templates/weekly_planner.html:788
+#: templates/weekly_planner.html:70 templates/weekly_planner.html:797
 msgid "Sa"
 msgstr "S"
 
@@ -73,7 +73,7 @@ msgstr "S"
 msgid "Saturday"
 msgstr "Sábado"
 
-#: templates/weekly_planner.html:78 templates/weekly_planner.html:926
+#: templates/weekly_planner.html:78 templates/weekly_planner.html:936
 msgid "Su"
 msgstr "D"
 
@@ -81,118 +81,178 @@ msgstr "D"
 msgid "Sunday"
 msgstr "Domingo"
 
-#: templates/weekly_planner.html:135 templates/weekly_planner.html:281
-#: templates/weekly_planner.html:416 templates/weekly_planner.html:552
-#: templates/weekly_planner.html:685 templates/weekly_planner.html:818
-#: templates/weekly_planner.html:956
+#: templates/weekly_planner.html:109
+msgid "document.getElementById(\"current-date\").innerHTML = d.toDateString();"
+msgstr "document.getElementById(\"current-date\").innerHTML = d.toLocaleDateString('es-ES');"
+
+#: templates/weekly_planner.html:137 templates/weekly_planner.html:285
+#: templates/weekly_planner.html:421 templates/weekly_planner.html:558
+#: templates/weekly_planner.html:692 templates/weekly_planner.html:828
+#: templates/weekly_planner.html:967
 msgid "&plus; new"
 msgstr "&plus; añadir"
 
-#: templates/weekly_planner.html:138 templates/weekly_planner.html:283
-#: templates/weekly_planner.html:418 templates/weekly_planner.html:554
-#: templates/weekly_planner.html:687 templates/weekly_planner.html:820
-#: templates/weekly_planner.html:958
+#: templates/weekly_planner.html:140 templates/weekly_planner.html:287
+#: templates/weekly_planner.html:423 templates/weekly_planner.html:560
+#: templates/weekly_planner.html:694 templates/weekly_planner.html:830
+#: templates/weekly_planner.html:969
 msgid "Incomplete:"
 msgstr "Lo que te falta hacer:"
 
-#: templates/weekly_planner.html:145 templates/weekly_planner.html:289
-#: templates/weekly_planner.html:424 templates/weekly_planner.html:560
-#: templates/weekly_planner.html:693 templates/weekly_planner.html:826
-#: templates/weekly_planner.html:964
+#: templates/weekly_planner.html:147 templates/weekly_planner.html:293
+#: templates/weekly_planner.html:429 templates/weekly_planner.html:566
+#: templates/weekly_planner.html:700 templates/weekly_planner.html:836
+#: templates/weekly_planner.html:975
 msgid "Complete:"
 msgstr "Lo que ya hiciste:"
 
-#: templates/weekly_planner.html:149
+#: templates/weekly_planner.html:151
 msgid "(Fresh start!)"
 msgstr "(¡Inicio de semana!)"
 
-#: templates/weekly_planner.html:150
+#: templates/weekly_planner.html:153
+msgid "productive"
+msgstr "BienTrabajador"
+
+#: templates/weekly_planner.html:153
 msgid "Tweet #productive"
 msgstr "#BienTrabajador"
 
-#: templates/weekly_planner.html:158 templates/weekly_planner.html:300
-#: templates/weekly_planner.html:434 templates/weekly_planner.html:570
-#: templates/weekly_planner.html:701 templates/weekly_planner.html:836
-#: templates/weekly_planner.html:974
+#: templates/weekly_planner.html:161 templates/weekly_planner.html:304
+#: templates/weekly_planner.html:439 templates/weekly_planner.html:576
+#: templates/weekly_planner.html:710 templates/weekly_planner.html:846
+#: templates/weekly_planner.html:985
 msgid "WHAT TO DO:"
 msgstr "QUÉ HACER:"
 
-#: templates/weekly_planner.html:163 templates/weekly_planner.html:304
-#: templates/weekly_planner.html:438 templates/weekly_planner.html:574
-#: templates/weekly_planner.html:705 templates/weekly_planner.html:840
-#: templates/weekly_planner.html:978
+#: templates/weekly_planner.html:166 templates/weekly_planner.html:308
+#: templates/weekly_planner.html:443 templates/weekly_planner.html:580
+#: templates/weekly_planner.html:714 templates/weekly_planner.html:850
+#: templates/weekly_planner.html:989
 msgid "WHEN:"
 msgstr "CUÁNDO:"
 
-#: templates/weekly_planner.html:197 templates/weekly_planner.html:334
-#: templates/weekly_planner.html:468 templates/weekly_planner.html:604
-#: templates/weekly_planner.html:735 templates/weekly_planner.html:870
-#: templates/weekly_planner.html:1008
+#: templates/weekly_planner.html:200 templates/weekly_planner.html:338
+#: templates/weekly_planner.html:473 templates/weekly_planner.html:610
+#: templates/weekly_planner.html:744 templates/weekly_planner.html:880
+#: templates/weekly_planner.html:1019
 msgid "Add"
 msgstr "Agregar"
 
-#: templates/weekly_planner.html:217 templates/weekly_planner.html:352
-#: templates/weekly_planner.html:486 templates/weekly_planner.html:622
-#: templates/weekly_planner.html:753 templates/weekly_planner.html:888
-#: templates/weekly_planner.html:1026
+#: templates/weekly_planner.html:220 templates/weekly_planner.html:356
+#: templates/weekly_planner.html:491 templates/weekly_planner.html:628
+#: templates/weekly_planner.html:762 templates/weekly_planner.html:898
+#: templates/weekly_planner.html:1037
 msgid "Nevermind"
 msgstr "Olvidalo"
 
-#: templates/weekly_planner.html:230 templates/weekly_planner.html:365
-#: templates/weekly_planner.html:767 templates/weekly_planner.html:903
-#: templates/weekly_planner.html:1041
+#: templates/weekly_planner.html:233 templates/weekly_planner.html:369
+#: templates/weekly_planner.html:776 templates/weekly_planner.html:913
+#: templates/weekly_planner.html:1052
 msgid "You earn a pat on the back!"
 msgstr "¡Besito y apapacho para ti!"
 
-#: templates/weekly_planner.html:292
+#: templates/weekly_planner.html:260
+msgid "document.getElementById(\"current-date1\").innerHTML = d.toDateString();"
+msgstr "document.getElementById(\"current-date1\").innerHTML = d.toLocaleDateString('es-ES');"
+
+#: templates/weekly_planner.html:296
 msgid "(You can make it through this week)"
 msgstr "(¡Tú puedes!)"
 
-#: templates/weekly_planner.html:293
-msgid "Tweet #tuesdaygoals"
-msgstr "#BienTrabajador"
+#: templates/weekly_planner.html:297
+msgid "tuesdaygoals"
+msgstr "mejorquelunes"
 
-#: templates/weekly_planner.html:427
+#: templates/weekly_planner.html:297
+msgid "Tweet #tuesdaygoals"
+msgstr "#mejorquelunes"
+
+#: templates/weekly_planner.html:397
+msgid "document.getElementById(\"current-date2\").innerHTML = d.toDateString();"
+msgstr "document.getElementById(\"current-date2\").innerHTML = d.toLocaleDateString('es-ES');"
+
+#: templates/weekly_planner.html:432
 msgid "(Halfway there)"
 msgstr "(A la mitad del camino)"
 
-#: templates/weekly_planner.html:428
-msgid "Tweet #goals"
-msgstr "#BienTrabajador"
+#: templates/weekly_planner.html:433
+msgid "goals"
+msgstr "mitaddesemana"
 
-#: templates/weekly_planner.html:500
+#: templates/weekly_planner.html:433
+msgid "Tweet #goals"
+msgstr "#mitaddesemana"
+
+#: templates/weekly_planner.html:505
 msgid "&nbsp; You get a <br>gold star!"
 msgstr "¡Una estrellita para ti!"
 
-#: templates/weekly_planner.html:563
+#: templates/weekly_planner.html:533
+msgid "document.getElementById(\"current-date3\").innerHTML = d.toDateString();"
+msgstr "document.getElementById(\"current-date3\").innerHTML = d.toLocaleDateString('es-ES');"
+
+#: templates/weekly_planner.html:569
 msgid "(Almost there...)"
 msgstr "(Ya casi...)"
 
-#: templates/weekly_planner.html:564
-msgid "Tweet #fruitful"
-msgstr "#BienTrabajador"
+#: templates/weekly_planner.html:570
+msgid "fruitful"
+msgstr "casiesviernes"
 
-#: templates/weekly_planner.html:635
+#: templates/weekly_planner.html:570
+msgid "Tweet #fruitful"
+msgstr "#casiesviernes"
+
+#: templates/weekly_planner.html:641
 msgid "Great work!"
+msgstr ""
+
+#: templates/weekly_planner.html:668
+msgid "document.getElementById(\"current-date4\").innerHTML = d.toDateString();"
 msgstr "¡Bien hecho!"
 
-#: templates/weekly_planner.html:696
+#: templates/weekly_planner.html:703
 msgid "(Finally!)"
 msgstr "(¡Por fin!)"
 
-#: templates/weekly_planner.html:829
+#: templates/weekly_planner.html:704
+msgid "finallyfriday"
+msgstr "findesemana"
+
+#: templates/weekly_planner.html:704
+msgid "Tweet #finallyfriday"
+msgstr "#findesemana"
+
+#: templates/weekly_planner.html:804
+msgid "document.getElementById(\"current-date5\").innerHTML = d.toDateString();"
+msgstr "document.getElementById(\"current-date5\").innerHTML = d.toLocaleDateString('es-ES');"
+
+#: templates/weekly_planner.html:839
 msgid "(Hopefully planning something fun...)"
 msgstr "(Espero que estés planeando algo divertido...)"
 
-#: templates/weekly_planner.html:830
-msgid "Tweet #fun"
-msgstr "#BienTrabajador"
+#: templates/weekly_planner.html:840
+msgid "fun"
+msgstr "pachanga"
 
-#: templates/weekly_planner.html:967
+#: templates/weekly_planner.html:840
+msgid "Tweet #fun"
+msgstr "#pachanga"
+
+#: templates/weekly_planner.html:943
+msgid "document.getElementById(\"current-date6\").innerHTML = d.toDateString();"
+msgstr "document.getElementById(\"current-date6\").innerHTML = d.toLocaleDateString('es-ES');"
+
+#: templates/weekly_planner.html:978
 msgid "(Maybe relax for a bit?)"
 msgstr "(¿Relájate un poco? Aunque sea una vez a la semana...)"
 
-#: templates/weekly_planner.html:968
+#: templates/weekly_planner.html:979
+msgid "relax"
+msgstr "dormingo"
+
+#: templates/weekly_planner.html:979
 msgid "Tweet #relax"
-msgstr "#BienTrabajador"
+msgstr "#dormingo"
 

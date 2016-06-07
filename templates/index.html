@@ -3,7 +3,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Weekly Planner Login</title>
+    <title>Habits | Login</title>
     
 <link rel="stylesheet" href="static/reset.css">
 <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
@@ -18,7 +18,7 @@
 <body>
     
 <div class="pen-title">
-  <h1>Welcome!</h1><span>
+  <h1 id="welcome">Welcome!</h1><span>
 </div>
 
 <div class="container">
@@ -40,13 +40,14 @@
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <button><input type="submit" class ="button"></button>
+        <button><input type="submit" class ="button"><span id="go">Let's go!</span></button>
       </div>
     </form>
   </div>
+
   <div class="card alt">
     <div class="toggle"></div>
-    <h1 class="title"><br><iframe id="gift" src="http://winniethepooh.disney.com/winnie-the-pooh" width="300" height="400"></iframe>
+    <h1 class="title"><br>Let's get <br>some honey!<br><br><img src='/static/honey.png' id="honey_jar">
       <div class="close"></div>
     </h1>
     <form>
