@@ -1,0 +1,262 @@
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	font-family: 'Muli', sans-serif;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 80%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: 'Muli', sans-serif;
+}
+
+.kanguro1, .donkey1, .pooh1 {
+	font-family: 'Muli', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Extended base styles (site specific)
+*****************************************************************/
+
+html { 
+	overflow-y: scroll; /* always force a scrollbar in non-IE */
+	}
+body {
+	background: #e3e5e5;
+	overflow-x: hidden;
+	height: 4550px;
+	line-height: 1.5;
+	color: #e3e5e5;
+	font-size: 14px;
+	font-family: 'Muli', sans-serif;
+}
+h1 {
+	color: #21a97e;
+}
+a, a:link,
+a:active,
+a:visited {
+	-webkit-transition: color 0.25s ease-out;
+	-moz-transition: color 0.25s ease-out;
+	-o-transition: color 0.25s ease-out;
+	transition: color 0.25s ease-out;
+	color:#21a97e;
+	outline: none;
+	text-decoration:none;
+	}
+	a:hover { 
+		color:#000;
+		}
+p {
+	margin:50em 0;
+	}
+
+
+#create_confirmation {
+  background-color: #21a97e;
+  border-radius: 4px;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+
+}
+#bear_name {
+  color: #ffa280;
+}
+/* Nav
+*****************************************************************/
+
+nav#primary {
+	z-index: 5;
+	position: fixed;
+	top: 50%;
+	right: 16px;
+	margin-top: -40px;
+}
+nav#primary li {
+	position: relative;
+	height: 20px;
+}
+
+/* Parallax
+*****************************************************************/
+
+/* content */
+#content {
+	z-index: 4;
+	position: relative;
+	max-width: 940px;
+	padding: 0 9px;
+	margin: 0 auto;
+	line-height: 1.7;
+	}
+	#content article {
+		width: 300px;
+		}
+		#pooh1 ,
+		#donkey1,
+		#kanguro1,
+		#about {
+			padding-top: 105px;
+			}
+		#pooh1 {
+			position: absolute;
+			top: 0px;
+			}
+		#donkey1 {
+			position: absolute;
+			top: 1090px;
+			}
+		#kanguro1 {
+			position: absolute;
+			top: 2180px;
+			}
+			#content h1 {
+				margin: 0 0 25px 0;
+				font-size: 40px;
+				font-family: 'Muli', sans-serif;
+				font-weight: normal;
+				line-height: 65px;
+				}
+		#about {
+			position: absolute;
+			top: 3270px;
+			}
+/* foreground (ballons/landscape) */
+#parallax-bg3 {
+	z-index: 3;
+	position: fixed;
+	left: 50%; /* align left edge with center of viewport */
+	top: 0;
+	width: 940px;
+	margin-left: -470px; /* move left by half element's width */
+	}
+	/* balloon */
+	#bg3-1 {
+		position: absolute;
+		top: -111px;
+		left: 355px;
+		}
+	#bg3-2 {
+		position: absolute;
+		top: 812px;
+		left: 321px;
+		}
+	#bg3-3 {
+		position: absolute;
+		top: 1628px;
+		left: 403px;
+		}
+	#bg3-4 {
+		position: absolute;
+		top: 2700px;
+		left: -85px;
+		}
+/* midground (clouds) */
+#parallax-bg2 {
+	z-index: 2;
+	position: fixed;
+	left: 50%; /* align left edge with center of viewport */
+	top: 0;
+	width: 1200px;
+	margin-left: -600px; /* move left by half element's width */
+	}
+	#bg2-1 {
+		position: absolute;
+		top: 162px;
+		left: 200px;
+		}
+	#bg2-2 {
+		position: absolute;
+		top: 100px;
+		left: 1150px;
+		}
+	#bg2-3 {
+		position: absolute;
+		top: 543px;
+		left: -35px;
+		}
+	#bg2-4 {
+		position: absolute;
+		top: 1180px;
+		left: 250px;
+		}
+	#bg2-5 {
+		position: absolute;
+		top: 900px;
+		left: 890px;
+		}
+/* background (clouds) */
+#parallax-bg1 {
+	z-index: 1;
+	position: fixed;
+	left: 50%; /* align left edge with center of viewport */
+	top: 0;
+	width: 1200px;
+	margin-left: -600px; /* move left by half element's width */
+	}
+	#bg1-1 {
+		position: absolute;
+		top: 85px;
+		left: -270px;
+		}
+	#bg1-2 {
+		position: absolute;
+		top: 440px;
+		left: 795px;
+		}
+	#bg1-3 {
+		position: absolute;
+		top: 900px;
+		left: -220px;
+		}
+	#bg1-4 {
+		position: absolute;
+		top: 1020px;
+		left: 450px;
+		}
+
